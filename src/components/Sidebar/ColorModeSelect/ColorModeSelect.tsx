@@ -1,0 +1,55 @@
+import React from 'react';
+import { Flex, Box, useColorMode, Switch } from '@chakra-ui/react';
+import LightModeIcon from '../../Icons/LightModeIcon';
+import DarkModeIcon from '../../Icons/DarkModeIcon';
+import { useHover } from '../../../hooks/useHover';
+import { getColorThemeSelector } from '../../../utils/funcs';
+import useIsMobile from '../../../hooks/useIsMobile';
+
+const ColorModeButton: React.FC<{
+    Icon: React.FC<{
+        isHovering: boolean;
+    }>;
+    showNav: boolean;
+    onClick: any;
+}> = ({ Icon, onClick, showNav }) => {
+    const [ref, isHovering] = useHover<HTMLDivElement>();
+    const { colorMode, setColorMode } = useColorMode();
+    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+
+    return (
+        <>
+            <Box ref={ref} onClick={onClick} cursor="pointer">
+                <Icon isHovering={isHovering} />
+            </Box>
+
+            {showNav && (
+                <Switch
+                    m="4px 10px 0 10px"
+                    isChecked={colorMode === 'dark'}
+                    colorScheme={colorTheme('F5F7FF', '#272240')}
+                    onChange={(e) => setColorMode(e.target.checked ? 'dark' : 'light')}
+                    size="lg"
+                ></Switch>
+            )}
+        </>
+    );
+};
+
+const ColorModeSelect: React.FC<{ showNav: boolean }> = ({ showNav }) => {
+    const { colorMode, setColorMode } = useColorMode();
+    const mobile = useIsMobile();
+    return (
+        <Flex direction="row" justify="center" align="center" flex={1} mx="auto" borderRadius="20px" hidden={!showNav && mobile}>
+            <ColorModeButton
+                Icon={colorMode === 'light' ? LightModeIcon : DarkModeIcon}
+                showNav={showNav}
+                onClick={() => {
+                    setColorMode(colorMode === 'light' ? 'dark' : 'light');
+                }}
+            />
+        </Flex>
+    );
+};
+
+export default ColorModeSelect;
