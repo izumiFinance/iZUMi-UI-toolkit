@@ -6,8 +6,8 @@ import useIsMobile from '../../../hooks/useIsMobile';
 
 type BuyiZiButtonProps = {
     expand: boolean;
-    tokenPrice: number;
-    onClick: () => void;
+    tokenPrice: string;
+    onClick: any;
 } & BoxProps;
 
 const BuyiZiButton: React.FC<BuyiZiButtonProps> = (props) => {
