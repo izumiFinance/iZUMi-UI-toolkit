@@ -1,7 +1,8 @@
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Button, Menu, MenuButton, MenuList, Image, Box, Link, Flex } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, Image, Box, Flex } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 type DropDownButtonProps = {
-    page: PageConfig;
+    page: any;
     img?: string;
 };
 export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
