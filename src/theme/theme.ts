@@ -88,6 +88,7 @@ const theme = extendTheme({
             700: 'linear-gradient(98.73deg, #6E49CA -2.37%, #8664CE 89.44%)',
             800: 'linear-gradient(98.73deg, #6E49CA -2.37%, #8664CE 89.44%)', // you need this
         },
+        customGreen: '#00DD5E',
     },
     fonts: {
         primary: 'Lato',

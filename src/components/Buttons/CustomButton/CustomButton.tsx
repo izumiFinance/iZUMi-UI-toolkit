@@ -1,11 +1,22 @@
 import { BoxProps, useColorMode, Image, Flex } from '@chakra-ui/react';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { i_h4 } from '../../../style';
 import { getColorThemeSelector } from '../../../utils/funcs';
 
 export type ButtonProps = {
     text?: string | JSX.Element;
-    variant?: 'primary' | 'outline' | 'purple' | 'tertiary' | 'primary2' | 'primary3' | 'orange' | 'outlinePurple' | 'lightPurple' | 'none';
+    variant?:
+        | 'primary'
+        | 'outline'
+        | 'purple'
+        | 'tertiary'
+        | 'primary2'
+        | 'primary3'
+        | 'orange'
+        | 'outlinePurple'
+        | 'lightPurple'
+        | 'dark'
+        | 'none';
     theme?: 'light' | 'dark';
     radiusType?: 'sm' | 'md' | 'lg';
     heightType?: 'sm' | 'md' | 'lg';
@@ -14,11 +25,12 @@ export type ButtonProps = {
     fontClass?: any;
     selected?: boolean;
     leftIcon?: string;
+    rightIcon?: ReactElement;
 } & BoxProps;
 
 const CustomButton: React.FC<ButtonProps> = (props) => {
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
-    const { text, disabled, variant, selected, fontClass = i_h4, leftIcon, ...rest } = props;
+    const { text, disabled, variant, selected, fontClass = i_h4, leftIcon, rightIcon, ...rest } = props;
 
     const themeColor = {
         outline: {
@@ -59,6 +71,11 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
         lightPurple: {
             base: colorTheme('#EEEAFE', '#7F4AFE'),
             font: colorTheme('secondary.600', 'tertiary.100'),
+        },
+        dark: {
+            base: colorTheme('#140233', '#140233'),
+            font: colorTheme('tertiary.50', 'tertiary.50'),
+            hover: colorTheme('tertiary.500', 'tertiary.300'),
         },
     };
 
@@ -192,6 +209,20 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
                         background: '#739FE3',
                     },
                 };
+            case 'dark':
+                return {
+                    borderStyle: 'solid',
+                    borderRadius: '3px',
+                    textAlign: 'center' as unknown as any,
+                    backgroundColor: themeColor.dark.base,
+                    color: themeColor.dark.font,
+                    _hover: {
+                        background: themeColor.dark.hover,
+                    },
+                    _focus: {
+                        undefined,
+                    },
+                };
             case 'none':
                 return {
                     color: selected ? themeColor.none.focus : colorTheme('tertiary.300', 'tertiary.500'),
@@ -221,6 +252,7 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
         >
             {leftIcon && <Image src={leftIcon} mr="6px"></Image>}
             {text}
+            {rightIcon && rightIcon}
         </Flex>
     );
 };
