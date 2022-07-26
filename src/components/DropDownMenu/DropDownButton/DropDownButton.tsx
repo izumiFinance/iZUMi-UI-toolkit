@@ -1,27 +1,30 @@
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Button, Menu, MenuButton, MenuList, Image, Box, Flex } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { a_display } from '../../../style';
+import { ArrowDownGreen } from '../../ArrowDownGreen/ArrowDownGreen';
 type DropDownButtonProps = {
     page: any;
 };
 export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
     const { page } = props;
-
+    const { isOpen, onOpen, onClose } = useDisclosure();
     return (
-        <Menu>
+        <Menu isOpen={isOpen}>
             <MenuButton
                 as={Button}
-                rightIcon={<ChevronDownIcon />}
+                rightIcon={<ArrowDownGreen></ArrowDownGreen>}
                 bg="inherit"
                 className={a_display}
                 color="tertiary.50"
-                _hover={{ background: '#8A73FF' }}
-                _active={{ background: '#8A73FF' }}
+                onMouseEnter={onOpen}
+                onMouseLeave={onClose}
+                _hover={{ background: '#7D68E6' }}
+                _active={{ background: '#7D68E6' }}
             >
                 {page.name}
             </MenuButton>
-            <MenuList bg="rgba(20, 2, 51, 0.87);">
+            <MenuList bg="rgba(20, 2, 51, 0.87);" onMouseEnter={onOpen} onMouseLeave={onClose}>
                 {page.children.map((child: any) =>
                     child.address?.startsWith('http') ? (
                         <Link key={child.name + child.address} target="_blank" to={{ pathname: child.address }}>
