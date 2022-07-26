@@ -1,6 +1,7 @@
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, background } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, Image, Box, Flex } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { a_display } from '../../../style';
 type DropDownButtonProps = {
     page: any;
 };
@@ -13,6 +14,7 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
                 as={Button}
                 rightIcon={<ChevronDownIcon />}
                 bg="inherit"
+                className={a_display}
                 color="tertiary.50"
                 _hover={{ background: '#8A73FF' }}
                 _active={{ background: '#8A73FF' }}

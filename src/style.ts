@@ -459,3 +459,302 @@ export const i_text_prize_16 = style(
         }
     )
 );
+
+export const a_h1 = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '64px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '70px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            lineHeight: '40px',
+            fontSize: '40px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            lineHeight: '36px',
+            fontSize: '36px',
+        }
+    )
+);
+export const a_h2 = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '48px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '50px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '30px',
+
+            lineHeight: '32px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '30px',
+            lineHeight: '31px',
+        }
+    )
+);
+export const a_h3 = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '36px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '44px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '24px',
+
+            lineHeight: '26px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '20px',
+
+            lineHeight: '23px',
+        }
+    )
+);
+export const a_h4 = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '24px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '28px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '18px',
+
+            lineHeight: '20px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '14px',
+
+            lineHeight: '15.5px',
+        }
+    )
+);
+export const a_h5 = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '16px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '18px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '13px',
+
+            lineHeight: '13px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '10px',
+
+            lineHeight: '11px',
+        }
+    )
+);
+export const a_display_large = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '24px',
+        fontStyle: 'normal',
+        lineHeight: '33px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '18px',
+
+            lineHeight: '25.5px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '15px',
+
+            lineHeight: '20px',
+        }
+    )
+);
+export const a_display = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '18px',
+        fontStyle: 'normal',
+        lineHeight: '24px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '18px',
+            lineHeight: '25.5px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '15px',
+            lineHeight: '20px',
+        }
+    )
+);
+
+export const a_bold = style(
+    {
+        fontFamily: 'Gilroy-Bold',
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '20px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '12px',
+            lineHeight: '14px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '12px',
+            lineHeight: '14px',
+        }
+    )
+);
+export const a_p = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 500,
+        lineHeight: '20px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '12px',
+            lineHeight: '14px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '12px',
+            lineHeight: '14px',
+        }
+    )
+);
+export const a_small = style(
+    {
+        fontFamily: 'Gilroy',
+        fontSize: '12px',
+        fontStyle: 'normal',
+        fontWeight: 500,
+        lineHeight: '14px',
+        letterSpacing: '0em',
+    },
+    media(
+        {
+            maxWidth: 767,
+            minWidth: 576,
+        },
+        {
+            fontSize: '12px',
+            lineHeight: '14px',
+        }
+    ),
+    media(
+        {
+            maxWidth: 575,
+        },
+        {
+            fontSize: '12px',
+            lineHeight: '14px',
+        }
+    )
+);
