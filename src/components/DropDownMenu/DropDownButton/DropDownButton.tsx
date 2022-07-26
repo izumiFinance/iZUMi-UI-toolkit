@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { a_display } from '../../../style';
