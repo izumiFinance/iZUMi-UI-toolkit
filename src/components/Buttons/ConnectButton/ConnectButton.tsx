@@ -1,19 +1,39 @@
-import { Text, Flex, BoxProps, useColorMode, Box } from '@chakra-ui/react';
+import { Text, Flex, BoxProps, useColorMode, Box, Image } from '@chakra-ui/react';
 import React from 'react';
-import { i_text_d } from '../../../style';
+import { a_h5, i_text_d } from '../../../style';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import CustomButton from '../CustomButton/CustomButton';
 
 type ConnectButtonProps = {
     Identicon: any;
     onClick: () => void;
+    variant?: string;
 } & BoxProps;
 
 const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
-    const { Identicon, onClick, ...rest } = props;
+    const { Identicon, onClick, variant, ...rest } = props;
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
 
-    return (
+    return variant && variant === 'black' ? (
+        <CustomButton
+            variant="none"
+            width="201px"
+            height="46px"
+            borderRadius="5px"
+            onClick={onClick}
+            bg="#140233"
+            px="15px"
+            text={
+                <Flex direction="row" align="center" justify="center">
+                    <Text className={a_h5} as="span" fontFamily="Gilroy-Bold" color="tertiary.50">
+                        Connect to Wallet
+                    </Text>
+                    <Image boxSize="23px" ml="12px" src={process.env.PUBLIC_URL + '/assets/wallet/walletRight.svg'}></Image>
+                </Flex>
+            }
+            {...rest}
+        />
+    ) : (
         <CustomButton
             variant="none"
             width="170px"

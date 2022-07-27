@@ -23,7 +23,7 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
             >
                 {page.name}
             </MenuButton>
-            <MenuList bg="rgba(20, 2, 51, 0.87);" onMouseEnter={onOpen} onMouseLeave={onClose}>
+            <MenuList bg="rgba(20, 2, 51, 0.87);" onMouseEnter={onOpen} onMouseLeave={onClose} borderWidth="0px">
                 {page.children.map((child: any) =>
                     child.address?.startsWith('http') ? (
                         <Link key={child.name + child.address} target="_blank" to={{ pathname: child.address }}>
