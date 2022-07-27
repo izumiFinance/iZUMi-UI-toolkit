@@ -1,20 +1,44 @@
 import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { a_display } from '../../../style';
 import { ArrowDownGreen } from '../../ArrowDownGreen/ArrowDownGreen';
+import CustomButton from '../../Buttons/CustomButton/CustomButton';
 type DropDownButtonProps = {
     page: any;
 };
 export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
     const { page } = props;
     const { isOpen, onOpen, onClose } = useDisclosure();
-    return (
+    const history = useHistory();
+
+    return page.children.length === 0 ? (
+        <CustomButton
+            h="40px"
+            text={page.name}
+            bg="inherit"
+            className={a_display}
+            color="tertiary.50"
+            fontWeight="600"
+            px="16px"
+            borderRadius="7px"
+            _hover={{ background: '#7D68E6' }}
+            _active={{ background: '#7D68E6' }}
+            onClick={() => {
+                if (page.address && page.address.startsWith('http')) {
+                    window.open(page.address);
+                } else {
+                    history.push(page.address);
+                }
+            }}
+        ></CustomButton>
+    ) : (
         <Menu isOpen={isOpen}>
             <MenuButton
                 as={Button}
-                rightIcon={<ArrowDownGreen></ArrowDownGreen>}
+                rightIcon={<ArrowDownGreen />}
                 bg="inherit"
                 className={a_display}
+                fontSize="18px !important"
                 color="tertiary.50"
                 onMouseEnter={onOpen}
                 onMouseLeave={onClose}
