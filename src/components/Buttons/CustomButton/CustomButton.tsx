@@ -246,9 +246,9 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
                 color: themeColor.disable.font,
                 cursor: 'not-allowed',
             }}
-            {...rest}
             alignItems="center"
             justifyContent="center"
+            {...rest}
         >
             {leftIcon && <Image src={leftIcon} mr="6px"></Image>}
             {text}

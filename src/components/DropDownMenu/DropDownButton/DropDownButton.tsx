@@ -1,10 +1,11 @@
-import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure, MenuIcon, IconButton } from '@chakra-ui/react';
 import { Link, useHistory } from 'react-router-dom';
 import { a_display } from '../../../style';
 import { ArrowDownGreen } from '../../ArrowDownGreen/ArrowDownGreen';
 import CustomButton from '../../Buttons/CustomButton/CustomButton';
 type DropDownButtonProps = {
     page: any;
+    variant?: string;
 };
 export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
     const { page } = props;
@@ -21,6 +22,7 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
             fontWeight="600"
             px="16px"
             borderRadius="7px"
+            justifyContent={{ base: 'left', sm: 'center' }}
             _hover={{ background: '#7D68E6' }}
             _active={{ background: '#7D68E6' }}
             onClick={() => {
