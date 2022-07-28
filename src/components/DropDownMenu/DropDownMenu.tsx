@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { useHistory } from 'react-router-dom';
 import { config } from '../../../../config/sidebar/config';
-import { a_h5 } from '../../style';
+import { a_display } from '../../style';
 import { MenuClose } from '../Icons/MenuIcon/MenuClose';
 import { MenuIcon } from '../Icons/MenuIcon/MenuIcon';
 import { DropDownButton } from './DropDownButton/DropDownButton';
@@ -54,7 +54,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                         return (
                             <Accordion defaultIndex={[0]} allowMultiple={true}>
                                 <AccordionItem bg="rgba(20, 2, 51, 0.87);" color="tertiary.50" border="1px solid #393357">
-                                    <AccordionButton className={a_h5} fontFamily="Gilroy-Bold !important" my="10px">
+                                    <AccordionButton className={a_display} fontFamily="Gilroy-Bold !important" my="10px">
                                         <Box flex="1" textAlign="left">
                                             {page.name}
                                         </Box>
@@ -66,14 +66,14 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                                                 <Link key={child.name + child.address} target="_blank" to={{ pathname: child.address }}>
                                                     <Box
                                                         display="block"
-                                                        fontFamily="Montserrat-Medium"
-                                                        fontSize="13px"
+                                                        fontFamily="Gilroy"
+                                                        fontSize="14px"
                                                         pt="13px"
                                                         mr="34px"
                                                         pl="27px"
                                                         pb="11px"
                                                         target="_blank"
-                                                        color="tertiary.50"
+                                                        color="tertiary.200"
                                                         _hover={{ background: '#7D68E6' }}
                                                         onClick={() => {
                                                             if (child.address && child.address.startsWith('http')) {
@@ -90,15 +90,15 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                                                 <Link to={child.address as string} key={child.name + child.address}>
                                                     <Box
                                                         display="block"
-                                                        fontSize="13px"
-                                                        fontFamily="Montserrat-Medium"
+                                                        fontSize="14px"
+                                                        fontFamily="Gilroy"
                                                         pt="13px"
                                                         mr="34px"
                                                         pl="27px"
                                                         pb="11px"
                                                         //fontWeight="bold"
                                                         target="_blank"
-                                                        color="tertiary.50"
+                                                        color="tertiary.200"
                                                         _hover={{ background: '#7D68E6' }}
                                                         onClick={() => {
                                                             if (child.address && child.address.startsWith('http')) {
