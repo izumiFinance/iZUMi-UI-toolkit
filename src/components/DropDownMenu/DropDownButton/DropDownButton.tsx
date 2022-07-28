@@ -18,7 +18,7 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
             text={page.name}
             bg="inherit"
             className={a_display}
-            fontFamily="Gilroy-Bold !important"
+            fontFamily={{ base: 'Gilroy-Bold !important', xl: 'Gilroy !important' }}
             color="tertiary.50"
             fontWeight="600"
             px="16px"
