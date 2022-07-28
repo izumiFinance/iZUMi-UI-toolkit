@@ -1,14 +1,7 @@
 import { chakra, Flex, useColorMode } from '@chakra-ui/react';
 import { getColorThemeSelector } from '../../utils/funcs';
 
-type Variant =
-    | 'base'
-    | 'light'
-    | 'deep'
-    | 'deep2'
-    | 'purpleLinear'
-    | 'grey'
-    | 'none';
+type Variant = 'base' | 'light' | 'deep' | 'deep2' | 'purpleLinear' | 'grey' | 'navyBlue' | 'none';
 
 // TODO: Add a proper boxShadowValue when in hover state.
 const Card = chakra((props) => {
@@ -54,10 +47,7 @@ const Card = chakra((props) => {
         },
         tabCard: {
             bg: colorTheme('#FFFFFF', '#292343'),
-            boxShadow: colorTheme(
-                ' 0px 0px 27px rgba(218, 206, 230, 0.25)',
-                '0px 0px 27px rgba(29, 6, 51, 0.25)'
-            ),
+            boxShadow: colorTheme(' 0px 0px 27px rgba(218, 206, 230, 0.25)', '0px 0px 27px rgba(29, 6, 51, 0.25)'),
         },
         lightGary: {
             bg: colorTheme('#F8F8FB', '#211834'),
@@ -65,26 +55,19 @@ const Card = chakra((props) => {
         },
         tabTopCard: {
             bg: colorTheme('#FFFFFF', '#292343'),
-            boxShadow: colorTheme(
-                '5px 20px 27px -16px  rgba(218, 206, 230, 0.25)',
-                '5px 20px 27px -16px  rgba(29, 6, 51, 0.25)'
-            ),
+            boxShadow: colorTheme('5px 20px 27px -16px  rgba(218, 206, 230, 0.25)', '5px 20px 27px -16px  rgba(29, 6, 51, 0.25)'),
+        },
+        navyBlue: {
+            bg: colorTheme('#140B43', '#140B43'),
+            boxShadow: colorTheme('5px 20px 27px -16px  rgba(218, 206, 230, 0.25)', '5px 20px 27px -16px  rgba(29, 6, 51, 0.25)'),
         },
     };
 
     return (
         <Flex
             direction="column"
-            bg={
-                variant
-                    ? themeColor[variant as Variant].bg
-                    : themeColor['base'].bg
-            }
-            boxShadow={
-                variant
-                    ? themeColor[variant as Variant].boxShadow
-                    : themeColor['base'].boxShadow
-            }
+            bg={variant ? themeColor[variant as Variant].bg : themeColor['base'].bg}
+            boxShadow={variant ? themeColor[variant as Variant].boxShadow : themeColor['base'].boxShadow}
             borderRadius="6px"
             {...rest}
         >
