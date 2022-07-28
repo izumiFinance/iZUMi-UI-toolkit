@@ -17,12 +17,12 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
     return variant && variant === 'black' ? (
         <CustomButton
             variant="none"
-            width="201px"
+            width={{ base: '160px', sm: '201px' }}
             height="46px"
             borderRadius="5px"
             onClick={onClick}
             bg="#140233"
-            px="15px"
+            px={{ base: '5px', sm: '15px' }}
             text={
                 <Flex direction="row" align="center" justify="center">
                     <Text className={a_h5} as="span" fontFamily="Gilroy-Bold" color="tertiary.50">

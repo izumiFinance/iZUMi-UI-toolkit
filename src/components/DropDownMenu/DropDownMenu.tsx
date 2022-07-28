@@ -41,7 +41,6 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                     _active={{ background: 'inherit' }}
                     icon={isOpen ? <MenuClose /> : <MenuIcon />}
                 ></Image>
-                {/* </Button> */}
             </PopoverTrigger>
             <PopoverContent bg="rgba(20, 2, 51, 0.87);">
                 {config.pages.map((page) => {
@@ -54,8 +53,8 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                     } else {
                         return (
                             <Accordion defaultIndex={[0]} allowMultiple={true}>
-                                <AccordionItem bg="rgba(20, 2, 51, 0.87);" color="tertiary.50">
-                                    <AccordionButton className={a_h5} my="10px">
+                                <AccordionItem bg="rgba(20, 2, 51, 0.87);" color="tertiary.50" border="1px solid #393357">
+                                    <AccordionButton className={a_h5} fontFamily="Gilroy-Bold !important" my="10px">
                                         <Box flex="1" textAlign="left">
                                             {page.name}
                                         </Box>
@@ -75,6 +74,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                                                         pb="11px"
                                                         target="_blank"
                                                         color="tertiary.50"
+                                                        _hover={{ background: '#7D68E6' }}
                                                         onClick={() => {
                                                             if (child.address && child.address.startsWith('http')) {
                                                                 window.open(child.address);
@@ -99,6 +99,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                                                         //fontWeight="bold"
                                                         target="_blank"
                                                         color="tertiary.50"
+                                                        _hover={{ background: '#7D68E6' }}
                                                         onClick={() => {
                                                             if (child.address && child.address.startsWith('http')) {
                                                                 window.open(child.address);

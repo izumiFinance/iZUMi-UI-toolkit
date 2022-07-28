@@ -1,4 +1,4 @@
-import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure, MenuIcon, IconButton } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure } from '@chakra-ui/react';
 import { Link, useHistory } from 'react-router-dom';
 import { a_display } from '../../../style';
 import { ArrowDownGreen } from '../../ArrowDownGreen/ArrowDownGreen';
@@ -18,11 +18,13 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
             text={page.name}
             bg="inherit"
             className={a_display}
+            fontFamily="Gilroy-Bold !important"
             color="tertiary.50"
             fontWeight="600"
             px="16px"
             borderRadius="7px"
-            justifyContent={{ base: 'left', sm: 'center' }}
+            border={{ base: '1px solid #393357', xl: 'unset' }}
+            justifyContent={{ base: 'left', xl: 'center' }}
             _hover={{ background: '#7D68E6' }}
             _active={{ background: '#7D68E6' }}
             onClick={() => {
