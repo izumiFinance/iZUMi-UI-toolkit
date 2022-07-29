@@ -14,7 +14,7 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
 
     return page.children.length === 0 ? (
         <CustomButton
-            h="62px"
+            h={{ base: '62px', xl: '40px' }}
             text={page.name}
             bg="inherit"
             className={a_display}

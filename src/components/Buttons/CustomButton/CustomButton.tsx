@@ -16,6 +16,7 @@ export type ButtonProps = {
         | 'outlinePurple'
         | 'lightPurple'
         | 'dark'
+        | 'navyBlue'
         | 'none';
     theme?: 'light' | 'dark';
     radiusType?: 'sm' | 'md' | 'lg';
@@ -221,6 +222,20 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
                     },
                     _focus: {
                         undefined,
+                    },
+                };
+            case 'navyBlue':
+                return {
+                    borderRadius: '3px',
+                    background: 'rgba(64, 54, 167, 0.77);',
+                    color: '#ffffff',
+                    height: '70px',
+                    width: '300px',
+                    _hover: {
+                        background: 'tertiary.200',
+                    },
+                    _focus: {
+                        background: 'tertiary.200',
                     },
                 };
             case 'none':
