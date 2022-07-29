@@ -17,6 +17,7 @@ export type ButtonProps = {
         | 'lightPurple'
         | 'dark'
         | 'navyBlue'
+        | 'outlineGreen'
         | 'none';
     theme?: 'light' | 'dark';
     radiusType?: 'sm' | 'md' | 'lg';
@@ -232,10 +233,27 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
                     height: '70px',
                     width: '300px',
                     _hover: {
-                        background: 'tertiary.200',
+                        background: 'tertiary.500',
                     },
                     _focus: {
-                        background: 'tertiary.200',
+                        background: 'tertiary.500',
+                    },
+                };
+            case 'outlineGreen':
+                return {
+                    borderWidth: '2px',
+                    borderStyle: 'solid',
+                    borderColor: selected ? 'customGreen' : themeColor.outlinePurple.base,
+                    backgroundColor: 'transparent',
+                    color: themeColor.outline.base,
+                    borderRadius: '6px',
+                    height: '60px',
+                    width: '180px',
+                    _hover: {
+                        borderColor: 'customGreen',
+                    },
+                    _focus: {
+                        borderColor: 'customGreen',
                     },
                 };
             case 'none':
