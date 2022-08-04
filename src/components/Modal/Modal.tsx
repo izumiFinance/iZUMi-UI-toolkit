@@ -9,12 +9,13 @@ type ModalProps = {
     onClose: any;
     title: string | any;
     children: any;
+    modalBg?: any;
 } & BoxProps;
 
 export const Modal: React.FC<ModalProps> = (props) => {
-    const { isOpen, onClose, title, children, ...rest } = props;
+    const { isOpen, onClose, title, children, modalBg, ...rest } = props;
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
-    const bgColor = colorTheme('#ffffff', '#211834');
+    const bgColor = modalBg ?? colorTheme('#ffffff', '#211834');
     return (
         isOpen && (
             <>

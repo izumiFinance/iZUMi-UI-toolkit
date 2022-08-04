@@ -526,7 +526,7 @@ export const a_h3 = style(
         fontStyle: 'normal',
         fontWeight: 600,
         lineHeight: '44px',
-        letterSpacing: '0em',
+        letterSpacing: '0.01em',
     },
     media(
         {
@@ -557,7 +557,7 @@ export const a_h4 = style(
         fontStyle: 'normal',
         fontWeight: 700,
         lineHeight: '28px',
-        letterSpacing: '0em',
+        letterSpacing: '-0.011em',
     },
     media(
         {
