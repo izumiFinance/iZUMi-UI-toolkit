@@ -17,7 +17,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
     return variant && variant === 'black' ? (
         <CustomButton
             variant="none"
-            width={{ base: '160px', sm: '201px' }}
+            width={{ base: '145px', sm: '201px' }}
             height="46px"
             borderRadius="5px"
             onClick={onClick}
@@ -28,7 +28,11 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
                     <Text className={a_h5} as="span" fontFamily="Gilroy-Bold" color="tertiary.50">
                         Connect to Wallet
                     </Text>
-                    <Image boxSize="23px" ml="12px" src={process.env.PUBLIC_URL + '/assets/wallet/walletRight.svg'}></Image>
+                    <Image
+                        boxSize="23px"
+                        ml={{ base: '5px', sm: '12px' }}
+                        src={process.env.PUBLIC_URL + '/assets/wallet/walletRight.svg'}
+                    ></Image>
                 </Flex>
             }
             {...rest}
