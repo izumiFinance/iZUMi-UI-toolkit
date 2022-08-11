@@ -30,9 +30,8 @@ export type ButtonProps = {
     rightIcon?: ReactElement;
 } & BoxProps;
 
-const CustomButton: React.FC<ButtonProps> = (props) => {
+export const CustomButton: React.FC<ButtonProps> = (props) => {
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
-    console.log('colorTheme   ', colorTheme, '   useColorMode().colorMode  ', useColorMode().colorMode);
     const { text, disabled, variant, selected, fontClass = i_h4, leftIcon, rightIcon, ...rest } = props;
 
     const themeColor = {

@@ -1,5 +1,12 @@
 # iZUMi UI toolkit
 
+This project is based on storybook
+
+How to start storybook
+
+### `yarn`
+### `yarn storybook`
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
