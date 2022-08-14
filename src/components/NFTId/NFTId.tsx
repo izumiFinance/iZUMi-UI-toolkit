@@ -23,7 +23,7 @@ export const NFTId: React.FC<NFTIdProps> = ({ id, link, direction, name, ...rest
                     <Icon
                         as={AiOutlineLink}
                         boxSize="16px"
-                        color={colorTheme('#0166FF', 'tertiery.300')}
+                        color={colorTheme('#0166FF', 'tertiary.300')}
                         onClick={
                             link
                                 ? () => {
@@ -36,7 +36,7 @@ export const NFTId: React.FC<NFTIdProps> = ({ id, link, direction, name, ...rest
                 </HStack>
             }
             w="80px"
-            labelColor={colorTheme('#0166FF', 'tertiery.300')}
+            labelColor={colorTheme('#0166FF', 'tertiary.300')}
             {...rest}
         />
     );

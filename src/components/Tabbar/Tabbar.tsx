@@ -24,9 +24,9 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
         );
     };
     const history = useHistory();
-    const listFoucusRef = React.useRef<any | null>(null);
+    const listFocusRef = React.useRef<any | null>(null);
     useOutsideClick({
-        ref: listFoucusRef,
+        ref: listFocusRef,
         handler: () => {
             const temp = Array(config.pages.length).fill(false);
             setOpenList(temp);
@@ -34,7 +34,7 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
     });
     let clickChildren = false;
     return (
-        <Flex w="100%" h="50px" bgColor={colorTheme('#ffffff', '#292343')} zIndex="1" position="fixed" bottom="0px" ref={listFoucusRef}>
+        <Flex w="100%" h="50px" bgColor={colorTheme('#ffffff', '#292343')} zIndex="1" position="fixed" bottom="0px" ref={listFocusRef}>
             {config.pages.map((page: any, index: number) => {
                 return (
                     <Flex

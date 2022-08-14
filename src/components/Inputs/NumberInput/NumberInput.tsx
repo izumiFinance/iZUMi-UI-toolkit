@@ -14,10 +14,10 @@ export const CustomNumberInput: React.FC<
         fontClass?: any;
         disabled?: boolean;
         inputBg?: any;
-        setIsInputFoucs?: any;
+        setIsInputFocus?: any;
         unit?: string;
     } & BoxProps
-> = ({ onInc, onDec, size, fontClass, onBlur, inputValue, errorInfo, disabled, inputBg, setIsInputFoucs, unit, ...rest }) => {
+> = ({ onInc, onDec, size, fontClass, onBlur, inputValue, errorInfo, disabled, inputBg, setIsInputFocus, unit, ...rest }) => {
     const [localValue, setLocalValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [showErrorInfo, setShowErrorInfo] = useState(false);
@@ -60,7 +60,7 @@ export const CustomNumberInput: React.FC<
 
     const handleFocus = useCallback(() => {
         setShowErrorInfo(false);
-        setIsInputFoucs && setIsInputFoucs(true);
+        setIsInputFocus && setIsInputFocus(true);
         inputValue && setLocalValue(inputValue);
     }, [setShowErrorInfo, setLocalValue, inputValue]);
 
@@ -73,11 +73,11 @@ export const CustomNumberInput: React.FC<
 
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
 
-    const inputFoucusRef = React.useRef<any | null>(null);
+    const inputFocusRef = React.useRef<any | null>(null);
     useOutsideClick({
-        ref: inputFoucusRef,
+        ref: inputFocusRef,
         handler: () => {
-            setIsInputFoucs && setIsInputFoucs(false);
+            setIsInputFocus && setIsInputFocus(false);
         },
     });
 
@@ -100,7 +100,7 @@ export const CustomNumberInput: React.FC<
                 height="26px"
             >
                 <Input
-                    ref={inputFoucusRef}
+                    ref={inputFocusRef}
                     textAlign={'center'}
                     className={fontClass || i_h3}
                     fontSize={style.inputFontSize}

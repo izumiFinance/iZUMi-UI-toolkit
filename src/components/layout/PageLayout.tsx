@@ -23,8 +23,8 @@ const PageLayout: React.FC<PageLayoutProps> = (props) => {
     // });
 
     const location = useLocation();
-    const notShowDivderUrl = ['/trade/swap', '/trade/limit'];
-    const [isShowDivder, setisShowDivder] = useState(true);
+    const notShowDividerUrl = ['/trade/swap', '/trade/limit'];
+    const [isShowDivider, setIsShowDivider] = useState(true);
 
     const showLoading = () => {
         const urls = ['/trade'];
@@ -34,7 +34,7 @@ const PageLayout: React.FC<PageLayoutProps> = (props) => {
 
     useEffect(() => {
         const currentPath = location.pathname;
-        setisShowDivder(!isMobile && !notShowDivderUrl.includes(currentPath));
+        setIsShowDivider(!isMobile && !notShowDividerUrl.includes(currentPath));
     }, [location, isMobile]);
 
     return (
@@ -61,7 +61,7 @@ const PageLayout: React.FC<PageLayoutProps> = (props) => {
                 >
                     {props.header}
 
-                    {isShowDivder && <Divider m="0 !important" />}
+                    {isShowDivider && <Divider m="0 !important" />}
 
                     {props.loading && showLoading() ? <Loading /> : props.body}
                 </VStack>
