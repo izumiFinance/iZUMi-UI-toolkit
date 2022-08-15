@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from '@chakra-ui/react';
 
 const CopyrightInfo: React.FC = () => {
+
     return (
         <Box
             mb="66px"
