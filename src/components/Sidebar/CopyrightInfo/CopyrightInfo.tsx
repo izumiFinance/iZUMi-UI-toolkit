@@ -1,9 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
-import { useTranslation } from 'react-i18next';
 
 const CopyrightInfo: React.FC = () => {
-    const { t } = useTranslation();
     return (
         <Box
             mb="66px"
@@ -25,7 +23,7 @@ const CopyrightInfo: React.FC = () => {
                     x="-0.501"
                     y="7.375"
                 >
-                    {t('copyright-info')}
+                    @2021-2022 iZUMi. &nbsp; All rights reserved.
                 </text>
             </svg>
         </Box>
