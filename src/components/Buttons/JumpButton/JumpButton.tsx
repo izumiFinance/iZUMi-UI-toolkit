@@ -1,9 +1,10 @@
 import React from 'react';
-import { Icon } from '@chakra-ui/react';
+import { Icon, Image } from '@chakra-ui/react';
 import { ButtonProps } from '../CustomButton/CustomButton';
 import CustomButton from '../CustomButton/CustomButton';
 import { i_text_d } from '../../../style';
 import { useHistory } from 'react-router';
+import placeholder from '../../../assets/placeholder.png';
 
 type JumpButtonProps = {
     text?: string;
@@ -11,11 +12,12 @@ type JumpButtonProps = {
     param?: any;
     type?: string;
     icon?: any;
+    imageUrl?: string;
 } & ButtonProps;
 
 const JumpButton: React.FC<JumpButtonProps> = (props) => {
     const history = useHistory();
-    const { text, target, param, type, icon, ...rest } = props;
+    const { text, target, param, type, icon, imageUrl, ...rest } = props;
 
     return (
         <>
@@ -59,6 +61,23 @@ const JumpButton: React.FC<JumpButtonProps> = (props) => {
                     p="7px"
                     {...rest}
                 ></CustomButton>
+            )}
+
+            {type === 'image' && (
+                <Image
+                    src={imageUrl}
+                    fallbackSrc={placeholder}
+                    cursor="pointer"
+                    onClick={() => {
+                        history.push({
+                            pathname: target,
+                            state: {
+                                ...param,
+                            },
+                        });
+                    }}
+                    {...rest as any}
+                />
             )}
         </>
     );
