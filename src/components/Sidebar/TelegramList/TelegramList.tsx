@@ -26,7 +26,7 @@ export const TelegramList: React.FC<Props> = ({ Icon }) => {
             }}
             ref={ref}
         >
-            <Flex mt="-23px" pt="25px">
+            <Flex mt="-10px" pt="12px">
                 <Icon isHovering={isHovering} />
             </Flex>
             <Flex zIndex="1">

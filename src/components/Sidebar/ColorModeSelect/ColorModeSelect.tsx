@@ -19,19 +19,9 @@ const ColorModeButton: React.FC<{
 
     return (
         <>
-            <Box ref={ref} onClick={onClick} cursor="pointer">
+            <Box ref={ref} onClick={onClick} cursor="pointer" onChange={(e: any) => setColorMode(e.target.checked ? 'dark' : 'light')}>
                 <Icon isHovering={isHovering} />
             </Box>
-
-            {showNav && (
-                <Switch
-                    m="4px 10px 0 10px"
-                    isChecked={colorMode === 'dark'}
-                    colorScheme={colorTheme('F5F7FF', '#272240')}
-                    onChange={(e) => setColorMode(e.target.checked ? 'dark' : 'light')}
-                    size="lg"
-                ></Switch>
-            )}
         </>
     );
 };
@@ -40,7 +30,7 @@ const ColorModeSelect: React.FC<{ showNav: boolean }> = ({ showNav }) => {
     const { colorMode, setColorMode } = useColorMode();
     const mobile = useIsMobile();
     return (
-        <Flex direction="row" justify="center" align="center" flex={1} mx="auto" borderRadius="20px" hidden={!showNav && mobile}>
+        <Flex direction="row" h="30px" justify="start" align="center" flex="1" borderRadius="20px" hidden={!showNav && mobile}>
             <ColorModeButton
                 Icon={colorMode === 'light' ? LightModeIcon : DarkModeIcon}
                 showNav={showNav}
