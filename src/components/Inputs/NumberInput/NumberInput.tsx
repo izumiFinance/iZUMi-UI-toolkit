@@ -2,6 +2,7 @@ import { HStack, Button, Input, useColorMode, Tooltip, BoxProps, useOutsideClick
 import React, { useCallback, useState } from 'react';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import { i_h3, i_text_copy } from '../../../style';
+import { useTranslation } from 'react-i18next';
 
 export const CustomNumberInput: React.FC<
     {
@@ -18,6 +19,7 @@ export const CustomNumberInput: React.FC<
         unit?: string;
     } & BoxProps
 > = ({ onInc, onDec, size, fontClass, onBlur, inputValue, errorInfo, disabled, inputBg, setIsInputFocus, unit, ...rest }) => {
+    const { t } = useTranslation();
     const [localValue, setLocalValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [showErrorInfo, setShowErrorInfo] = useState(false);
@@ -90,7 +92,7 @@ export const CustomNumberInput: React.FC<
             )}
             <Tooltip
                 hasArrow={true}
-                label={errorInfo}
+                label={errorInfo !== undefined && errorInfo !== '' && t(errorInfo)}
                 textColor="white"
                 bg="#E25C5C"
                 fontFamily="Montserrat-Bold"
