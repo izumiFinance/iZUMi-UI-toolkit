@@ -5,6 +5,7 @@ import { BoxProps, useColorMode, VStack, Text, Icon, HStack } from '@chakra-ui/r
 import { getColorThemeSelector } from '../../utils/funcs';
 import useInterval from 'ahooks/lib/useInterval';
 import Card from '../Card/Card';
+import { useTranslation } from 'react-i18next';
 
 type BlockProps = {
     initialSeconds: number;
@@ -13,6 +14,7 @@ type BlockProps = {
 const CountDownBlock: React.FC<BlockProps> = (props) => {
     const { initialSeconds, ...rest } = props;
 
+    const { t } = useTranslation();
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
     const [timeLeft, setTimeLeft] = useState(initialSeconds);
     const seconds = useMemo(() => Math.floor(timeLeft % 60), [timeLeft]);
@@ -35,12 +37,12 @@ const CountDownBlock: React.FC<BlockProps> = (props) => {
         <Card w="100%" h="50px" pl="10px" pt="4px" bg={colorTheme('#F5F5F5', 'tertiary.700')} {...rest}>
             <VStack alignItems="start" spacing="-2px">
                 <Text className={i_text_d} color={colorTheme('tertiary.600', 'tertiary.200')} fontSize="12px !important">
-                    Current cycle:
+                    {t('Current cycle')} :
                 </Text>
                 <HStack alignItems="center" spacing="10px">
                     <Icon as={FiClock} boxSize="16px" />
                     <Text className={i_text_copy_bold} color={colorTheme('tertiary.600', 'tertiary.200')} fontSize="12px !important">
-                        {days} {days > 1 ? 'days' : 'day'} {hours > 9 ? hours : `0${hours}`}:{minutes > 9 ? minutes : `0${minutes}`}:
+                        {days} {days > 1 ? t('days') : t('day')} {hours > 9 ? hours : `0${hours}`}:{minutes > 9 ? minutes : `0${minutes}`}:
                         {seconds > 9 ? seconds : `0${seconds}`}
                     </Text>
                 </HStack>
