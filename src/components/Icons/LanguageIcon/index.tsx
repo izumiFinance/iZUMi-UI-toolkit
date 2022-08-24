@@ -14,7 +14,7 @@ const LanguageIcon: React.FC<Props> = (props) => {
             isHovering={isHovering}
             pathClassesMap={{
                 norm: colorTheme(Array(7).fill('lang-icon-light'), Array(7).fill('lang-icon-dark')),
-                hover: [],
+                hover: colorTheme(Array(7).fill('lang-icon-dark'), Array(7).fill('light-btn-dark')),
             }}
             paths={[
                 'M11,21.83A10.85,10.85,0,1,1,21.85,11,10.87,10.87,0,0,1,11,21.83ZM11,1.22A9.77,9.77,0,1,0,20.77,11,9.78,9.78,0,0,0,11,1.22Z',
