@@ -2,18 +2,18 @@ import { useColorMode } from '@chakra-ui/react';
 import React from 'react';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import PathIcon from '../PathIcon/PathIcon';
-
-const LanguageIcon: React.FC = () => {
+interface Props {
+    isHovering: boolean;
+}
+const LanguageIcon: React.FC<Props> = (props) => {
+    const { isHovering } = props;
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
 
     return (
         <PathIcon
-            isHovering={false}
+            isHovering={isHovering}
             pathClassesMap={{
-                norm: colorTheme(
-                    Array(7).fill('lang-icon-light'),
-                    Array(7).fill('lang-icon-dark')
-                ),
+                norm: colorTheme(Array(7).fill('lang-icon-light'), Array(7).fill('lang-icon-dark')),
                 hover: [],
             }}
             paths={[
