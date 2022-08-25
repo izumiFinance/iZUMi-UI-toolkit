@@ -6,7 +6,7 @@ const CopyrightInfo: React.FC = () => {
     const { t } = useTranslation();
 
     return (
-        <Box mb="66px" fontSize="9px" alignSelf="center" fontFamily="Lato" fontWeight="bold">
+        <Box mb={{ base: '0px', sm: '66px' }} fontSize="9px" alignSelf="center" fontFamily="Lato" fontWeight="bold">
             <svg xmlns="http://www.w3.org/2000/svg" width="170" height="10" viewBox="0 0 170 10">
                 <text
                     id="_2021_izumi_Finance._All_rights_reserved."
