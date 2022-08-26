@@ -1,6 +1,7 @@
 import { Flex, Menu, MenuButton, MenuItem, MenuList, Text, useColorMode, VStack, Image, useOutsideClick } from '@chakra-ui/react';
 import React from 'react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { i_text_copy, i_text_d } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
@@ -11,6 +12,7 @@ export type TabBarProps = {
 
 export const TabBar: React.FC<TabBarProps> = (pros) => {
     const { config } = pros;
+    const { t } = useTranslation();
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
     const [isOpenList, setOpenList] = useState(Array(config.pages.length).fill(false));
     const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -61,7 +63,7 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
                                         fallbackSrc={getImgUrl(page.img)}
                                     ></Image>
                                     <Text className={i_text_copy} mt="3px !important">
-                                        {page.name}
+                                        {t(page.name)}
                                     </Text>
                                 </VStack>
                             </MenuButton>
@@ -94,7 +96,7 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
                                                 }
                                             }}
                                         >
-                                            <Text>{children.name}</Text>
+                                            <Text>{t(children.name)}</Text>
                                         </MenuItem>
                                     );
                                 })}

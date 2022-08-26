@@ -1,12 +1,6 @@
-import {
-    Box,
-    BoxProps,
-    useColorMode,
-    Image,
-    HStack,
-    Text,
-} from '@chakra-ui/react';
+import { Box, BoxProps, useColorMode, Image, HStack, Text } from '@chakra-ui/react';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { i_text_copy } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
 
@@ -18,6 +12,7 @@ type props = {
 
 export const CustomTag: React.FC<props> = (props) => {
     const { variant, text, icon, ...rest } = props;
+    const { t } = useTranslation();
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
 
     const theme = {
@@ -58,12 +53,8 @@ export const CustomTag: React.FC<props> = (props) => {
         >
             <HStack>
                 {icon && <Image src={process.env.PUBLIC_URL + icon} h="12px" />}
-                <Text
-                    className={i_text_copy}
-                    color={theme[variant].color}
-                    isTruncated={true}
-                >
-                    {text}
+                <Text className={i_text_copy} color={theme[variant].color} isTruncated={true}>
+                    {t(text)}
                 </Text>
             </HStack>
         </Box>
