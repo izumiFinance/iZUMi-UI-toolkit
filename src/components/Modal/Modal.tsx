@@ -56,7 +56,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
                         top="0px"
                         pos="sticky"
                         bgColor={bgColor}
-                        zIndex="1"
+                        zIndex="3"
                         pt="40px"
                         pb="20px"
                         px={{ base: '30px', lg: '50px' }}
