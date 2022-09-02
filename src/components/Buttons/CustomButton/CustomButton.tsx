@@ -18,6 +18,7 @@ export type ButtonProps = {
         | 'dark'
         | 'navyBlue'
         | 'outlineGreen'
+        | 'lightGray'
         | 'none';
     theme?: 'light' | 'dark';
     radiusType?: 'sm' | 'md' | 'lg';
@@ -78,6 +79,10 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
             base: colorTheme('#140233', '#140233'),
             font: colorTheme('tertiary.50', 'tertiary.50'),
             hover: colorTheme('tertiary.500', 'tertiary.300'),
+        },
+        lightGray: {
+            base: colorTheme('#F9F9FB', '#3A2F53'),
+            font: colorTheme('tertiary.700', 'tertiary.300'),
         },
     };
 
@@ -254,6 +259,16 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
                     },
                     _focus: {
                         borderColor: 'customGreen',
+                    },
+                };
+            case 'lightGray':
+                return {
+                    border: colorTheme('#C3AAFF 1px solid', '#6A5E86 1px solid'),
+                    borderRadius: '6px',
+                    background: themeColor.lightGray.base,
+                    color: themeColor.lightGray.font,
+                    _hover: {
+                        background: colorTheme('#EEEAFE', '#140E28'),
                     },
                 };
             case 'none':
