@@ -50,7 +50,7 @@ const Card = chakra((props) => {
             boxShadow: colorTheme(' 0px 0px 27px rgba(218, 206, 230, 0.25)', '0px 0px 27px rgba(29, 6, 51, 0.25)'),
         },
         lightGary: {
-            bg: colorTheme('#F8F8FB', '#211834'),
+            bg: { base: colorTheme('#F8F8FA', '#211834'), sm: colorTheme('#F8F8FB', '#211834') },
             boxShadow: colorTheme('undefined', 'undefined'),
         },
         tabTopCard: {

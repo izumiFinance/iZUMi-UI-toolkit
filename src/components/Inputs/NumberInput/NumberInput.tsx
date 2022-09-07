@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import { i_h3, i_text_copy } from '../../../style';
 import { useTranslation } from 'react-i18next';
+import { AdaptationMode } from '../../layout/PageLayout';
 
 export const CustomNumberInput: React.FC<
     {
@@ -17,8 +18,9 @@ export const CustomNumberInput: React.FC<
         inputBg?: any;
         setIsInputFocus?: any;
         unit?: string;
+        type?: AdaptationMode;
     } & BoxProps
-> = ({ onInc, onDec, size, fontClass, onBlur, inputValue, errorInfo, disabled, inputBg, setIsInputFocus, unit, ...rest }) => {
+> = ({ onInc, onDec, size, fontClass, onBlur, inputValue, errorInfo, disabled, inputBg, setIsInputFocus, unit, type, ...rest }) => {
     const { t } = useTranslation();
     const [localValue, setLocalValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
@@ -83,7 +85,64 @@ export const CustomNumberInput: React.FC<
         },
     });
 
-    return (
+    return type === 'mobile' ? (
+        <HStack px={style.px} color="#9388AD" {...rest}>
+            {onDec && (
+                <Button fontSize={style.btnFontSize} onClick={onDec} bg="none" w="20px" minWidth="20px !important" p="0">
+                    -
+                </Button>
+            )}
+            <Tooltip
+                hasArrow={true}
+                label={errorInfo !== undefined && errorInfo !== '' && t(errorInfo)}
+                textColor="white"
+                bg="#E25C5C"
+                fontFamily="Montserrat-Bold"
+                placement="top"
+                isOpen={errorInfo !== undefined && errorInfo !== '' && showErrorInfo}
+                borderRadius="4px"
+                height="26px"
+            >
+                <Input
+                    ref={inputFocusRef}
+                    textAlign={'end'}
+                    className={fontClass || i_h3}
+                    fontSize={style.inputFontSize}
+                    value={isTyping ? localValue : inputValue || ''}
+                    onChange={(e: any) => {
+                        onChange(e);
+                    }}
+                    disabled={disabled}
+                    placeholder="0.00"
+                    _placeholder={{
+                        color: colorTheme('tertiary.500', 'tertiary.200'),
+                    }}
+                    color={colorTheme('tertiary.500', 'tertiary.200')}
+                    border="none"
+                    paddingLeft={'8px'}
+                    paddingRight="8px"
+                    onBlur={() => {
+                        handleBlur();
+                    }}
+                    onFocus={() => {
+                        handleFocus();
+                    }}
+                    _focus={{}}
+                    bg={inputBg ? inputBg : 'unset'}
+                />
+            </Tooltip>
+            {unit && (
+                <Text className={i_text_copy} color={colorTheme('#9E96AF', 'tertiary.300')} ml="0px !important" mr="5px !important">
+                    {unit}
+                </Text>
+            )}
+            {onInc && (
+                <Button fontSize={style.btnFontSize} onClick={onInc} bg="none" w="20px" minWidth="20px !important" p="0">
+                    +
+                </Button>
+            )}
+        </HStack>
+    ) : (
         <HStack px={style.px} color="#9388AD" {...rest}>
             {onDec && (
                 <Button fontSize={style.btnFontSize} onClick={onDec} bg="none" w="20px" minWidth="20px !important" p="0">

@@ -4,6 +4,7 @@ import { getColorThemeSelector } from '../../utils/funcs';
 import { useLocation } from 'react-router-dom';
 import useIsMobile from '../../hooks/useIsMobile';
 import { Loading } from '../Loading/Loading';
+export type AdaptationMode = 'mobile' | 'pc';
 
 export type PageLayoutProps = {
     loading: boolean;

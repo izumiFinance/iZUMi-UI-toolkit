@@ -1,9 +1,9 @@
-import { Flex, Menu, MenuButton, MenuItem, MenuList, Text, useColorMode, VStack, Image, useOutsideClick } from '@chakra-ui/react';
-import React from 'react';
+import { Flex, Menu, MenuButton, Text, useColorMode, VStack, Image, useOutsideClick } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router-dom';
-import { i_text_copy, i_text_d } from '../../style';
+import { useHistory, useLocation } from 'react-router-dom';
+import { i_text_copy } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
 
 export type TabBarProps = {
@@ -34,14 +34,28 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
             setOpenList(temp);
         },
     });
-    let clickChildren = false;
+    const clickChildren = false;
+
+    const location = useLocation();
+    useEffect(() => {
+        const currentPath = location.pathname;
+        config.pages.map((item: any, index: number) => {
+            const isFounded = item.address === currentPath || item.children.find((i: any) => i.address === currentPath);
+            if (isFounded) {
+                setSelectedIndex(index);
+            }
+        });
+    }, [config.pages, location]);
     return (
-        <Flex w="100%" h="50px" bgColor={colorTheme('#ffffff', '#292343')} zIndex="1" position="fixed" bottom="0px" ref={listFocusRef}>
+        <Flex w="100%" h="97px" bgColor={colorTheme('#ffffff', '#292343')} zIndex="1" position="fixed" bottom="0px" ref={listFocusRef}>
             {config.pages.map((page: any, index: number) => {
+                const isSelected = selectedIndex === index;
                 return (
                     <Flex
                         key={index}
                         w={100 / config.pages.length + '%'}
+                        h="37px"
+                        mt="12px"
                         onClick={() => {
                             const temp = Array(config.pages.length).fill(false);
                             temp[index] = !isOpenList[index];
@@ -59,15 +73,15 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
                                 <VStack>
                                     <Image
                                         boxSize="20px"
-                                        src={selectedIndex === index ? getSelectedImgUrl(page.img) : getImgUrl(page.img)}
+                                        src={isSelected ? getSelectedImgUrl(page.img) : getImgUrl(page.img)}
                                         fallbackSrc={getImgUrl(page.img)}
                                     ></Image>
-                                    <Text className={i_text_copy} mt="3px !important">
+                                    <Text className={i_text_copy} mt="3px !important" color={isSelected ? '#7F4AFE' : ''}>
                                         {t(page.name)}
                                     </Text>
                                 </VStack>
                             </MenuButton>
-                            <MenuList
+                            {/* <MenuList
                                 minW="130px"
                                 w="100%"
                                 className={i_text_d}
@@ -100,7 +114,7 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
                                         </MenuItem>
                                     );
                                 })}
-                            </MenuList>
+                            </MenuList> */}
                         </Menu>
                     </Flex>
                 );
