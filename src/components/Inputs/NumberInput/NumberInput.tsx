@@ -105,6 +105,7 @@ export const CustomNumberInput: React.FC<
             >
                 <Input
                     ref={inputFocusRef}
+                    h="25px"
                     textAlign={'end'}
                     className={fontClass || i_h3}
                     fontSize={style.inputFontSize}
