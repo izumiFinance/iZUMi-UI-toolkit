@@ -14,6 +14,7 @@ export type ButtonProps = {
         | 'primary3'
         | 'orange'
         | 'outlinePurple'
+        | 'inlinePurple'
         | 'lightPurple'
         | 'dark'
         | 'navyBlue'
@@ -44,6 +45,7 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
             base: colorTheme('tertiary.200', 'tertiary.'),
             hover: colorTheme('secondary.600', 'secondary.300'),
         },
+        inlinePurple: {},
         tertiary: {
             base: colorTheme('secondary.50', 'tertiary.600'),
             font: colorTheme('#8C7AA3', 'tertiary.100'),
@@ -137,6 +139,19 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
                         borderColor: themeColor.outlinePurple.hover,
                     },
                 };
+
+            case 'inlinePurple':
+                return {
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                    borderColor: selected ? '#ffffff' : '#E5DDE7',
+                    backgroundColor: selected ? 'secondary.50' : 'transparent',
+                    color: themeColor.outline.base,
+                    borderRadius: '6px',
+                    height: '60px',
+                    width: '180px',
+                };
+
             case 'purple':
                 return {
                     borderRadius: '3px',
