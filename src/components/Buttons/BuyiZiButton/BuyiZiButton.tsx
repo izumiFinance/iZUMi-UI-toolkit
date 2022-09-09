@@ -18,14 +18,19 @@ const BuyiZiButton: React.FC<BuyiZiButtonProps> = (props) => {
         <CustomButton
             hidden={!expand && mobile}
             variant="primary"
-            w={expand ? '88px' : '30px'}
-            h="30px"
+            w={expand ? (mobile ? '70px' : '88px') : '30px'}
+            h={mobile ? '26px' : '30px'}
             borderRadius="15px"
             text={
                 <HStack w="100%" mx="auto">
-                    <Image w="19px" h="19px" src={process.env.PUBLIC_URL + '/assets/tokens/iZiWhite.svg'} ml={expand ? '12px' : '6px'} />
+                    <Image
+                        w={mobile ? '14px' : '19px'}
+                        h={mobile ? '14px' : '19px'}
+                        src={process.env.PUBLIC_URL + '/assets/tokens/iZiWhite.svg'}
+                        ml={expand ? (mobile ? '9px' : '12px') : '6px'}
+                    />
                     {expand && (
-                        <Text className={i_text_copy_bold} color="tertiary.50">
+                        <Text className={i_text_copy_bold} color="tertiary.50" ml={mobile ? '3px !important' : '8px !important'}>
                             ${/* --.-- */}
                             {tokenPrice}
                         </Text>

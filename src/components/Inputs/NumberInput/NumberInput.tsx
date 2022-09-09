@@ -120,8 +120,8 @@ export const CustomNumberInput: React.FC<
                     }}
                     color={colorTheme('tertiary.500', 'tertiary.200')}
                     border="none"
-                    paddingLeft={'8px'}
-                    paddingRight="8px"
+                    paddingLeft="1px"
+                    paddingRight="1px"
                     onBlur={() => {
                         handleBlur();
                     }}
