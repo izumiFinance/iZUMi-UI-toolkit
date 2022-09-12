@@ -48,7 +48,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
                         },
                     }}
                     transform="translateX(-50%) translateY(-50%)"
-                    pb="43px"
+                    pb={{ base: '35px', sm: '43px' }}
                     {...rest}
                 >
                     <HStack
@@ -57,10 +57,10 @@ export const Modal: React.FC<ModalProps> = (props) => {
                         pos="sticky"
                         bgColor={bgColor}
                         zIndex="3"
-                        pt="40px"
-                        pb="20px"
-                        px={{ base: '30px', lg: '50px' }}
-                        mb="20px"
+                        pt={{ base: '35px', sm: '40px' }}
+                        pb={{ base: '11px', sm: '20px' }}
+                        px={{ base: '22px', lg: '50px' }}
+                        mb={{ base: '0px', sm: '20px' }}
                     >
                         {typeof title === 'string' ? (
                             <Text className={i_text_copy_bold} fontSize="18px">
@@ -71,7 +71,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
                         )}
                         <CloseButton onClose={onClose} />
                     </HStack>
-                    <Box px={{ base: '30px', lg: '50px' }}>{children}</Box>
+                    <Box px={{ base: '22px', lg: '50px' }}>{children}</Box>
                 </Card>
             </>
         )
