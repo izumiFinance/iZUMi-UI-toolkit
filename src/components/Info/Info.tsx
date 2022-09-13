@@ -40,7 +40,7 @@ const Info = chakra(
                     )}
                     {labelIcon}
                 </Flex>
-                <HStack h="24px" spacing={spacing ?? '10px'}>
+                <HStack h={{ base: '17px', sm: '24px' }} spacing={spacing ?? '10px'}>
                     {typeof value === 'string' ? (
                         <Heading level="5" whiteSpace="nowrap">
                             {value}
