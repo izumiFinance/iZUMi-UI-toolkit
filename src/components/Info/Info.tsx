@@ -1,5 +1,5 @@
 import { InfoOutlineIcon } from '@chakra-ui/icons';
-import { chakra, ChakraProps, Flex, HStack, Stack, StackDirection, Tooltip } from '@chakra-ui/react';
+import { BoxProps, chakra, ChakraProps, Flex, HStack, Stack, StackDirection, Tooltip } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import { Heading } from '../Typography/Typography';
 
@@ -12,10 +12,24 @@ export type InfoProps = {
     labelColor?: string;
     labelIcon?: any;
     spacing?: string;
+    labelStyle?: BoxProps;
+    valueStyle?: BoxProps;
 };
 
 const Info = chakra(
-    ({ label, value, tooltip, tooltipIcon, direction, labelColor, labelIcon, spacing, ...chakraProps }: InfoProps & ChakraProps) => {
+    ({
+        label,
+        value,
+        tooltip,
+        tooltipIcon,
+        direction,
+        labelColor,
+        labelIcon,
+        spacing,
+        labelStyle,
+        valueStyle,
+        ...chakraProps
+    }: InfoProps & ChakraProps) => {
         const isColumn = direction === 'column' || direction === undefined;
         return (
             <Stack
@@ -32,7 +46,7 @@ const Info = chakra(
                     color={labelColor ? labelColor : undefined}
                 >
                     {typeof label === 'string' ? (
-                        <Heading level="6" whiteSpace="nowrap">
+                        <Heading level="6" whiteSpace="nowrap" {...labelStyle}>
                             {label}
                         </Heading>
                     ) : (
@@ -42,7 +56,7 @@ const Info = chakra(
                 </Flex>
                 <HStack h={{ base: '17px', sm: '24px' }} spacing={spacing ?? '10px'}>
                     {typeof value === 'string' ? (
-                        <Heading level="5" whiteSpace="nowrap">
+                        <Heading level="5" whiteSpace="nowrap" {...valueStyle}>
                             {value}
                         </Heading>
                     ) : (

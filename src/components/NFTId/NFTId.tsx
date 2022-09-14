@@ -4,6 +4,7 @@ import { i_text_copy_bold } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
 import { AiOutlineLink } from 'react-icons/ai';
 import Info from '../Info/Info';
+import useIsMobile from '../../hooks/useIsMobile';
 
 type NFTIdProps = {
     id: string | number | null;
@@ -14,10 +15,13 @@ type NFTIdProps = {
 
 export const NFTId: React.FC<NFTIdProps> = ({ id, link, direction, name, ...rest }) => {
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const isMobile = useIsMobile();
+
     return (
         <Info
             direction={direction || 'column'}
             label={name ?? 'NFTId'}
+            labelStyle={isMobile ? { fontFamily: 'Montserrat-SemiBold' } : {}}
             value={
                 <HStack spacing="6px">
                     <Icon

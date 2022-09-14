@@ -53,7 +53,12 @@ export const CustomTag: React.FC<props> = (props) => {
         >
             <HStack>
                 {icon && <Image src={process.env.PUBLIC_URL + icon} h="12px" />}
-                <Text className={i_text_copy} color={theme[variant].color} isTruncated={true}>
+                <Text
+                    className={i_text_copy}
+                    color={theme[variant].color}
+                    isTruncated={true}
+                    fontFamily={{ base: 'Montserrat', sm: 'Montserrat-Medium' }}
+                >
                     {t(text)}
                 </Text>
             </HStack>
