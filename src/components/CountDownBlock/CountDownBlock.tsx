@@ -38,7 +38,7 @@ const CountDownBlock: React.FC<BlockProps> = (props) => {
     return type === 'mobile' ? (
         <HStack w="100%" alignItems="start" {...rest}>
             <Text className={i_text_d} fontSize="12px !important" color="#A398BD">
-                {t('Current cycle')} :
+                {t('Current cycle')}
             </Text>
             <HStack alignItems="center" px="10px" py="3px" spacing="10px" bg="#E0D4FB" borderRadius="14px">
                 <Image boxSize="16px" src="/assets/farm/cycle.svg" mt="2px"></Image>
