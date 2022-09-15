@@ -1,9 +1,9 @@
-import { Flex, Menu, MenuButton, Text, useColorMode, VStack, Image, useOutsideClick } from '@chakra-ui/react';
+import { Flex, Menu, MenuButton, Text, useColorMode, VStack, Image, useOutsideClick, MenuList, MenuItem } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
-import { i_text_copy } from '../../style';
+import { i_text_copy, i_text_d } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
 
 export type TabBarProps = {
@@ -34,7 +34,7 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
             setOpenList(temp);
         },
     });
-    const clickChildren = false;
+    let clickChildren = false;
 
     const location = useLocation();
     useEffect(() => {
@@ -76,45 +76,51 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
                                         src={isSelected ? getSelectedImgUrl(page.img) : getImgUrl(page.img)}
                                         fallbackSrc={getImgUrl(page.img)}
                                     ></Image>
-                                    <Text className={i_text_copy} mt="3px !important" color={isSelected ? '#7F4AFE' : ''}>
+                                    <Text
+                                        className={i_text_copy}
+                                        mt="3px !important"
+                                        color={isSelected ? colorTheme('#7F4AFE', 'secondary.500') : colorTheme('tertiary.600', '#705C9A')}
+                                    >
                                         {t(page.name)}
                                     </Text>
                                 </VStack>
                             </MenuButton>
-                            {/* <MenuList
-                                minW="130px"
-                                w="100%"
-                                className={i_text_d}
-                                bg={colorTheme('#FBFBFB', '#100C1E')}
-                                position="relative"
-                                fontSize="13px"
-                            >
-                                {page.children.map((children: any, i: number) => {
-                                    return (
-                                        <MenuItem
-                                            key={i}
-                                            justifyContent="center"
-                                            onClick={() => {
-                                                setSelectedIndex(index);
-                                                if (children.address) {
-                                                    if (children.address.slice(0, 4) === 'http') {
-                                                        window.open(children.address);
-                                                    } else {
-                                                        if (page.address) {
-                                                            clickChildren = true;
+                            {!page.address && (
+                                <MenuList
+                                    minW="130px"
+                                    w="100%"
+                                    className={i_text_d}
+                                    bg={colorTheme('#FBFBFB', '#100C1E')}
+                                    position="relative"
+                                    fontSize="13px"
+                                >
+                                    {page.children.map((children: any, i: number) => {
+                                        return (
+                                            <MenuItem
+                                                key={i}
+                                                justifyContent="center"
+                                                onClick={() => {
+                                                    setSelectedIndex(index);
+                                                    if (children.address) {
+                                                        if (children.address.slice(0, 4) === 'http') {
+                                                            window.open(children.address);
                                                         } else {
-                                                            clickChildren = false;
+                                                            if (page.address) {
+                                                                clickChildren = true;
+                                                            } else {
+                                                                clickChildren = false;
+                                                            }
+                                                            history.push(children.address);
                                                         }
-                                                        history.push(children.address);
                                                     }
-                                                }
-                                            }}
-                                        >
-                                            <Text>{t(children.name)}</Text>
-                                        </MenuItem>
-                                    );
-                                })}
-                            </MenuList> */}
+                                                }}
+                                            >
+                                                <Text>{t(children.name)}</Text>
+                                            </MenuItem>
+                                        );
+                                    })}
+                                </MenuList>
+                            )}
                         </Menu>
                     </Flex>
                 );
