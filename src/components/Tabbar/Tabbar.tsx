@@ -46,8 +46,21 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
             }
         });
     }, [config.pages, location]);
+
+    function isIOSDevice() {
+        return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    }
+
     return (
-        <Flex w="100%" h="97px" bgColor={colorTheme('#ffffff', '#292343')} zIndex="1" position="fixed" bottom="0px" ref={listFocusRef}>
+        <Flex
+            w="100%"
+            h={isIOSDevice() ? '97px' : '65px'}
+            bgColor={colorTheme('#ffffff', '#292343')}
+            zIndex="1"
+            position="fixed"
+            bottom="0px"
+            ref={listFocusRef}
+        >
             {config.pages.map((page: any, index: number) => {
                 const isSelected = selectedIndex === index;
                 return (
