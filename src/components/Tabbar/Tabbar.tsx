@@ -48,7 +48,7 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
     }, [config.pages, location]);
 
     function isIOSDevice() {
-        return !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+        return !!navigator.platform && /iPhone/.test(navigator.platform);
     }
 
     return (

@@ -20,6 +20,7 @@ export type ButtonProps = {
         | 'navyBlue'
         | 'outlineGreen'
         | 'lightGray'
+        | 'mobileWhite'
         | 'none';
     theme?: 'light' | 'dark';
     radiusType?: 'sm' | 'md' | 'lg';
@@ -85,6 +86,10 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
         lightGray: {
             base: colorTheme('#F9F9FB', '#3A2F53'),
             font: colorTheme('tertiary.700', 'tertiary.300'),
+        },
+        mobileWhite: {
+            base: colorTheme('#F7F7F7', '#3E305B'),
+            font: colorTheme('#ACA4B7', '#B795E2'),
         },
     };
 
@@ -285,6 +290,13 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
                     _hover: {
                         background: colorTheme('#EEEAFE', '#140E28'),
                     },
+                };
+
+            case 'mobileWhite':
+                return {
+                    borderRadius: '3px',
+                    background: themeColor.mobileWhite.base,
+                    color: themeColor.mobileWhite.font,
                 };
             case 'none':
                 return {

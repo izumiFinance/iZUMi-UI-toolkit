@@ -40,9 +40,9 @@ const CountDownBlock: React.FC<BlockProps> = (props) => {
             <Text className={i_text_d} fontSize="12px !important" color="#A398BD">
                 {t('Current cycle')}
             </Text>
-            <HStack alignItems="center" px="10px" py="3px" spacing="10px" bg="#E0D4FB" borderRadius="14px">
+            <HStack alignItems="center" px="10px" py="3px" spacing="10px" bg={colorTheme('#E0D4FB', '#452B80')} borderRadius="14px">
                 <Image boxSize="16px" src="/assets/farm/cycle.svg" mt="2px"></Image>
-                <Text className={i_text_copy} color="#6F31FF" fontSize="12px !important">
+                <Text className={i_text_copy} color={colorTheme('#6F31FF', '#CAB4FF')} fontSize="12px !important">
                     {days} {days > 1 ? t('days') : t('day')} {hours > 9 ? hours : `0${hours}`}:{minutes > 9 ? minutes : `0${minutes}`}:
                     {seconds > 9 ? seconds : `0${seconds}`}
                 </Text>
