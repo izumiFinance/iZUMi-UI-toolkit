@@ -13,6 +13,7 @@ export const CustomNumberInput: React.FC<
         onDec?(): void;
         inputValue?: any;
         errorInfo?: string;
+        notShowError?: boolean;
         fontClass?: any;
         disabled?: boolean;
         inputBg?: any;
@@ -20,7 +21,22 @@ export const CustomNumberInput: React.FC<
         unit?: string;
         type?: AdaptationMode;
     } & BoxProps
-> = ({ onInc, onDec, size, fontClass, onBlur, inputValue, errorInfo, disabled, inputBg, setIsInputFocus, unit, type, ...rest }) => {
+> = ({
+    onInc,
+    onDec,
+    size,
+    fontClass,
+    onBlur,
+    inputValue,
+    errorInfo,
+    notShowError,
+    disabled,
+    inputBg,
+    setIsInputFocus,
+    unit,
+    type,
+    ...rest
+}) => {
     const { t } = useTranslation();
     const [localValue, setLocalValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
@@ -157,7 +173,7 @@ export const CustomNumberInput: React.FC<
                 bg="#E25C5C"
                 fontFamily="Montserrat-Bold"
                 placement="top"
-                isOpen={errorInfo !== undefined && errorInfo !== '' && showErrorInfo}
+                isOpen={errorInfo !== undefined && errorInfo !== '' && showErrorInfo && !notShowError}
                 borderRadius="4px"
                 height="26px"
             >
