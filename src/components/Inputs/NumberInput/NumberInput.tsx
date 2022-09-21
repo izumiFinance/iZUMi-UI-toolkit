@@ -179,6 +179,7 @@ export const CustomNumberInput: React.FC<
             >
                 <Input
                     ref={inputFocusRef}
+                    type="number"
                     textAlign={'center'}
                     className={fontClass || i_h3}
                     fontSize={style.inputFontSize}
@@ -203,6 +204,11 @@ export const CustomNumberInput: React.FC<
                     }}
                     _focus={{}}
                     bg={inputBg ? inputBg : 'unset'}
+                    onKeyPress={(event) => {
+                        if (event.key === '-' || event.key === '+') {
+                            event.preventDefault(); // Cancel the native operation
+                        }
+                    }}
                 />
             </Tooltip>
             {unit && (
