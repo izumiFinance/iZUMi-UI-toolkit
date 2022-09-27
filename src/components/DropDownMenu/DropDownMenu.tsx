@@ -43,7 +43,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                 ></Image>
             </PopoverTrigger>
             <PopoverContent bg="rgba(20, 2, 51, 0.87);">
-                {config.pages.map((page) => {
+                {config.pages.map((page: any) => {
                     const commonAttr = {
                         key: page.name,
                         img: page.img,
@@ -123,7 +123,7 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
         </Popover>
     ) : (
         <HStack {...rest} spacing="30px">
-            {config.pages.map((page) => {
+            {config.pages.map((page: any) => {
                 const commonAttr = {
                     key: page.name,
                     img: page.img,
