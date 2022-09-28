@@ -17,7 +17,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
     const bgColor = modalBg ?? colorTheme('#ffffff', '#211834');
     return (
-        isOpen && (
+        isOpen ? (
             <>
                 <Flex
                     w="200%"
@@ -74,6 +74,6 @@ export const Modal: React.FC<ModalProps> = (props) => {
                     <Box px={{ base: '22px', lg: '50px' }}>{children}</Box>
                 </Card>
             </>
-        )
+        ) : (<></>)
     );
 };
