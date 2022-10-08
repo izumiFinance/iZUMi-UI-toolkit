@@ -6,6 +6,7 @@ import {
     AccordionPanel,
     Box,
     BoxProps,
+    ChakraProps,
     HStack,
     IconButton,
     Image,
@@ -23,9 +24,13 @@ import { MenuIcon } from '../Icons/MenuIcon/MenuIcon';
 import { DropDownButton } from './DropDownButton/DropDownButton';
 type DropDownMenuProps = {
     variant?: string;
+    leftIcon?: any;
+    rightIcon?: any;
+    buttonProps?: ChakraProps;
+    menuListProps?: ChakraProps;
 } & BoxProps;
 export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
-    const { variant, ...rest } = props;
+    const { variant, leftIcon, rightIcon, buttonProps, menuListProps, ...rest } = props;
     const { isOpen, onOpen, onClose } = useDisclosure();
     const history = useHistory();
 
@@ -129,9 +134,17 @@ export const DropDownMenu: React.FC<DropDownMenuProps> = (props) => {
                     img: page.img,
                 };
                 if (page.children.length === 0) {
-                    return <DropDownButton {...commonAttr} page={page} />;
+                    return <DropDownButton {...commonAttr} buttonProps={buttonProps} page={page} />;
                 } else {
-                    return <DropDownButton {...commonAttr} page={page} />;
+                    return (
+                        <DropDownButton
+                            {...commonAttr}
+                            rightIcon={rightIcon ?? undefined}
+                            buttonProps={buttonProps}
+                            menuListProps={menuListProps ?? undefined}
+                            page={page}
+                        />
+                    );
                 }
             })}
         </HStack>
