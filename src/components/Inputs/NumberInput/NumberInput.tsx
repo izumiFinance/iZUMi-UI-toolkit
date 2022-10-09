@@ -179,7 +179,7 @@ export const CustomNumberInput: React.FC<
             >
                 <Input
                     ref={inputFocusRef}
-                    type="number"
+                    //type="number"
                     textAlign={'center'}
                     className={fontClass || i_h3}
                     fontSize={style.inputFontSize}
