@@ -1,5 +1,5 @@
 import React from 'react';
-import { BoxProps, HStack, Image, Text } from '@chakra-ui/react';
+import { BoxProps, ChakraProps, HStack, Image, Text } from '@chakra-ui/react';
 import CustomButton from '../CustomButton/CustomButton';
 import { i_text_copy_bold } from '../../../style';
 import useIsMobile from '../../../hooks/useIsMobile';
@@ -8,10 +8,11 @@ type BuyiZiButtonProps = {
     expand: boolean;
     tokenPrice: string;
     onClick: any;
+    imageProps?: ChakraProps;
 } & BoxProps;
 
 const BuyiZiButton: React.FC<BuyiZiButtonProps> = (props) => {
-    const { expand, tokenPrice, onClick, ...rest } = props;
+    const { expand, tokenPrice, onClick, imageProps, ...rest } = props;
     const mobile = useIsMobile();
 
     return (
@@ -28,6 +29,7 @@ const BuyiZiButton: React.FC<BuyiZiButtonProps> = (props) => {
                         h={mobile ? '14px' : '19px'}
                         src={process.env.PUBLIC_URL + '/assets/tokens/iZiWhite.svg'}
                         ml={expand ? (mobile ? '9px' : '12px') : '6px'}
+                        {...imageProps}
                     />
                     {expand && (
                         <Text className={i_text_copy_bold} color="tertiary.50" ml={mobile ? '3px !important' : '8px !important'}>

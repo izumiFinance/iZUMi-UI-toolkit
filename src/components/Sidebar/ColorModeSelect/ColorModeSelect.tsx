@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, useColorMode, Switch } from '@chakra-ui/react';
+import { Flex, Box, useColorMode, Switch, BoxProps } from '@chakra-ui/react';
 import LightModeIcon from '../../Icons/LightModeIcon';
 import DarkModeIcon from '../../Icons/DarkModeIcon';
 import { useHover } from '../../../hooks/useHover';
@@ -26,11 +26,11 @@ const ColorModeButton: React.FC<{
     );
 };
 
-const ColorModeSelect: React.FC<{ showNav: boolean }> = ({ showNav }) => {
+const ColorModeSelect: React.FC<{ showNav: boolean } & BoxProps> = ({ showNav, ...rest }) => {
     const { colorMode, setColorMode } = useColorMode();
     const mobile = useIsMobile();
     return (
-        <Flex direction="row" h="30px" justify="start" align="center" flex="1" borderRadius="20px" hidden={!showNav && mobile}>
+        <Flex direction="row" h="30px" justify="start" align="center" flex="1" borderRadius="20px" hidden={!showNav && mobile} {...rest}>
             <ColorModeButton
                 Icon={colorMode === 'light' ? LightModeIcon : DarkModeIcon}
                 showNav={showNav}
