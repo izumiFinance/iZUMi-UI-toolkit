@@ -1,4 +1,4 @@
-import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, Image, Box, Flex, useDisclosure, ChakraProps } from '@chakra-ui/react';
 import { Link, useHistory } from 'react-router-dom';
 import { a_display } from '../../../style';
 import { ArrowDownGreen } from '../../ArrowDownGreen/ArrowDownGreen';
@@ -6,9 +6,12 @@ import CustomButton from '../../Buttons/CustomButton/CustomButton';
 type DropDownButtonProps = {
     page: any;
     variant?: string;
+    rightIcon?: any;
+    buttonProps?: ChakraProps;
+    menuListProps?: ChakraProps;
 };
 export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
-    const { page } = props;
+    const { page, rightIcon, buttonProps, menuListProps } = props;
     const { isOpen, onOpen, onClose } = useDisclosure();
     const history = useHistory();
 
@@ -39,7 +42,7 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
         <Menu isOpen={isOpen}>
             <MenuButton
                 as={Button}
-                rightIcon={<ArrowDownGreen />}
+                rightIcon={rightIcon ? rightIcon : <ArrowDownGreen />}
                 bg="inherit"
                 className={a_display}
                 fontSize="18px !important"
@@ -48,10 +51,11 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
                 onMouseLeave={onClose}
                 _hover={{ background: '#7D68E6' }}
                 _active={{ background: '#7D68E6' }}
+                {...buttonProps}
             >
                 {page.name}
             </MenuButton>
-            <MenuList bg="rgba(20, 2, 51);" onMouseEnter={onOpen} onMouseLeave={onClose} borderWidth="0px">
+            <MenuList bg="rgba(20, 2, 51);" onMouseEnter={onOpen} onMouseLeave={onClose} borderWidth="0px" {...menuListProps}>
                 {page.children.map((child: any) =>
                     child.address?.startsWith('http') ? (
                         <Link key={child.name + child.address} target="_blank" to={{ pathname: child.address }}>
@@ -65,6 +69,7 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
                                 pb="11px"
                                 target="_blank"
                                 color="tertiary.50"
+                                {...menuListProps}
                             >
                                 <Flex>
                                     <Image boxSize="20px" mr="14px" src={child.icon}></Image>
@@ -85,6 +90,7 @@ export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
                                 pb="11px"
                                 target="_blank"
                                 color="tertiary.50"
+                                {...menuListProps}
                             >
                                 <Flex>
                                     <Image boxSize="20px" mr="14px" src={child.icon}></Image>

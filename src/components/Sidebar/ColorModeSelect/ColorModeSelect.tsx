@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, useColorMode, Switch } from '@chakra-ui/react';
+import { Flex, Box, useColorMode, Switch, BoxProps, Image } from '@chakra-ui/react';
 import LightModeIcon from '../../Icons/LightModeIcon';
 import DarkModeIcon from '../../Icons/DarkModeIcon';
 import { useHover } from '../../../hooks/useHover';
@@ -26,18 +26,33 @@ const ColorModeButton: React.FC<{
     );
 };
 
-const ColorModeSelect: React.FC<{ showNav: boolean }> = ({ showNav }) => {
+const ColorModeSelect: React.FC<{ showNav: boolean } & BoxProps> = ({ showNav, ...rest }) => {
     const { colorMode, setColorMode } = useColorMode();
     const mobile = useIsMobile();
+    const [ref, isHovering] = useHover<any>();
+
     return (
-        <Flex direction="row" h="30px" justify="start" align="center" flex="1" borderRadius="20px" hidden={!showNav && mobile}>
-            <ColorModeButton
-                Icon={colorMode === 'light' ? LightModeIcon : DarkModeIcon}
+        <Flex direction="row" w="29px" h="30px" justify="start" align="center" borderRadius="20px" hidden={!showNav && mobile} {...rest}>
+            <Image
+                ref={ref}
+                boxSize="25px"
+                isHovering={isHovering}
+                src={
+                    isHovering
+                        ? colorMode === 'light'
+                            ? '/assets/header/HoverColorModeSelect.svg'
+                            : '/assets/header/HoverdarkMode.svg'
+                        : colorMode === 'light'
+                        ? '/assets/header/ColorModeSelect.svg'
+                        : '/assets/header/darkMode.svg'
+                }
+                fallbackSrc="/assets/header/ColorModeSelect.svg"
+                cursor="pointer"
                 showNav={showNav}
                 onClick={() => {
                     setColorMode(colorMode === 'light' ? 'dark' : 'light');
                 }}
-            />
+            ></Image>
         </Flex>
     );
 };
