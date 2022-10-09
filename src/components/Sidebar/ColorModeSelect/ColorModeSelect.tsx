@@ -30,7 +30,7 @@ const ColorModeSelect: React.FC<{ showNav: boolean } & BoxProps> = ({ showNav, .
     const { colorMode, setColorMode } = useColorMode();
     const mobile = useIsMobile();
     return (
-        <Flex direction="row" h="30px" justify="start" align="center" flex="1" borderRadius="20px" hidden={!showNav && mobile} {...rest}>
+        <Flex direction="row" w="35px" h="30px" justify="start" align="center" borderRadius="20px" hidden={!showNav && mobile} {...rest}>
             <ColorModeButton
                 Icon={colorMode === 'light' ? LightModeIcon : DarkModeIcon}
                 showNav={showNav}
