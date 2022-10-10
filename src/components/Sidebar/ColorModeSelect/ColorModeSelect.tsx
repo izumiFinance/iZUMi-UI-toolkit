@@ -35,7 +35,7 @@ const ColorModeSelect: React.FC<{ showNav: boolean } & BoxProps> = ({ showNav, .
         <Flex direction="row" w="29px" h="30px" justify="start" align="center" borderRadius="20px" hidden={!showNav && mobile} {...rest}>
             <Image
                 ref={ref}
-                boxSize="25px"
+                boxSize="28px"
                 isHovering={isHovering}
                 src={
                     isHovering
