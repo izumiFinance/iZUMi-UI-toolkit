@@ -1,30 +1,8 @@
 import React from 'react';
-import { Flex, Box, useColorMode, Switch, BoxProps, Image } from '@chakra-ui/react';
-import LightModeIcon from '../../Icons/LightModeIcon';
-import DarkModeIcon from '../../Icons/DarkModeIcon';
+import { Flex, useColorMode, BoxProps, Image } from '@chakra-ui/react';
 import { useHover } from '../../../hooks/useHover';
-import { getColorThemeSelector } from '../../../utils/funcs';
 import useIsMobile from '../../../hooks/useIsMobile';
 
-const ColorModeButton: React.FC<{
-    Icon: React.FC<{
-        isHovering: boolean;
-    }>;
-    showNav: boolean;
-    onClick: any;
-}> = ({ Icon, onClick, showNav }) => {
-    const [ref, isHovering] = useHover<HTMLDivElement>();
-    const { colorMode, setColorMode } = useColorMode();
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
-
-    return (
-        <>
-            <Box ref={ref} onClick={onClick} cursor="pointer" onChange={(e: any) => setColorMode(e.target.checked ? 'dark' : 'light')}>
-                <Icon isHovering={isHovering} />
-            </Box>
-        </>
-    );
-};
 
 const ColorModeSelect: React.FC<{ showNav: boolean } & BoxProps> = ({ showNav, ...rest }) => {
     const { colorMode, setColorMode } = useColorMode();
@@ -36,7 +14,6 @@ const ColorModeSelect: React.FC<{ showNav: boolean } & BoxProps> = ({ showNav, .
             <Image
                 ref={ref}
                 boxSize="28px"
-                isHovering={isHovering}
                 src={
                     isHovering
                         ? colorMode === 'light'
@@ -48,7 +25,6 @@ const ColorModeSelect: React.FC<{ showNav: boolean } & BoxProps> = ({ showNav, .
                 }
                 fallbackSrc="/assets/header/ColorModeSelect.svg"
                 cursor="pointer"
-                showNav={showNav}
                 onClick={() => {
                     setColorMode(colorMode === 'light' ? 'dark' : 'light');
                 }}
