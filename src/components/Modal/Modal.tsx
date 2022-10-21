@@ -10,70 +10,75 @@ type ModalProps = {
     title: string | any;
     children: any;
     modalBg?: any;
+    titleProps?: BoxProps;
+    contentProps?: BoxProps;
 } & BoxProps;
 
 export const Modal: React.FC<ModalProps> = (props) => {
-    const { isOpen, onClose, title, children, modalBg, ...rest } = props;
+    const { isOpen, onClose, title, children, modalBg, titleProps, contentProps, ...rest } = props;
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
     const bgColor = modalBg ?? colorTheme('#ffffff', '#211834');
-    return (
-        isOpen ? (
-            <>
-                <Flex
-                    w="200%"
-                    h="200%"
-                    top="-200px"
-                    left="-200px"
-                    bg="black"
-                    opacity={colorTheme(0.15, 0.4)}
-                    position="fixed"
-                    zIndex={10}
-                    onClick={() => {
-                        onClose();
-                    }}
-                ></Flex>
+    return isOpen ? (
+        <>
+            <Flex
+                w="200%"
+                h="200%"
+                top="-200px"
+                left="-200px"
+                bg="black"
+                opacity={colorTheme(0.15, 0.4)}
+                position="fixed"
+                zIndex={10}
+                onClick={() => {
+                    onClose();
+                }}
+            ></Flex>
 
-                <Card
-                    variant="deep2"
-                    borderRadius="2px"
-                    zIndex={11}
-                    position="fixed"
-                    top="50%"
-                    left="50%"
-                    maxH="95%"
-                    overflowY="scroll"
-                    css={{
-                        '&::-webkit-scrollbar': {
-                            display: 'none !important',
-                        },
-                    }}
-                    transform="translateX(-50%) translateY(-50%)"
-                    pb={{ base: '35px', sm: '43px' }}
-                    {...rest}
+            <Card
+                variant="deep2"
+                borderRadius="2px"
+                zIndex={11}
+                position="fixed"
+                top="50%"
+                left="50%"
+                maxH="95%"
+                overflowY="scroll"
+                css={{
+                    '&::-webkit-scrollbar': {
+                        display: 'none !important',
+                    },
+                }}
+                transform="translateX(-50%) translateY(-50%)"
+                pb={{ base: '35px', sm: '43px' }}
+                {...rest}
+            >
+                <HStack
+                    justifyContent="space-between"
+                    top="0px"
+                    pos="sticky"
+                    bgColor={bgColor}
+                    zIndex="3"
+                    pt={{ base: '35px', sm: '40px' }}
+                    pb={{ base: '11px', sm: '20px' }}
+                    px={{ base: '22px', lg: '50px' }}
+                    mb={{ base: '0px', sm: '20px' }}
+                    {...titleProps}
                 >
-                    <HStack
-                        justifyContent="space-between"
-                        top="0px"
-                        pos="sticky"
-                        bgColor={bgColor}
-                        zIndex="3"
-                        pt={{ base: '35px', sm: '40px' }}
-                        pb={{ base: '11px', sm: '20px' }}
-                        px={{ base: '22px', lg: '50px' }}
-                        mb={{ base: '0px', sm: '20px' }}
-                    >
-                        {typeof title === 'string' ? (
-                            <Text className={i_text_copy_bold} fontSize="18px">
-                                {title}
-                            </Text>
-                        ) : (
-                            title
-                        )}
-                        <CloseButton onClose={onClose} />
-                    </HStack>
-                    <Box px={{ base: '22px', lg: '50px' }}>{children}</Box>
-                </Card>
-            </>
-        ) : (<></>)
+                    {typeof title === 'string' ? (
+                        <Text className={i_text_copy_bold} fontSize="18px">
+                            {title}
+                        </Text>
+                    ) : (
+                        title
+                    )}
+                    <CloseButton onClose={onClose} />
+                </HStack>
+                <Box px={{ base: '22px', lg: '50px' }} {...contentProps}>
+                    {children}
+                </Box>
+            </Card>
+        </>
+    ) : (
+        <></>
     );
 };
