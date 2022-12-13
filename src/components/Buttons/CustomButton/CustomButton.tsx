@@ -30,12 +30,13 @@ export type ButtonProps = {
     fontClass?: any;
     selected?: boolean;
     leftIcon?: string;
+    leftIconElement?: ReactElement;
     rightIcon?: ReactElement;
 } & BoxProps;
 
 const CustomButton: React.FC<ButtonProps> = (props) => {
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
-    const { text, disabled, variant, selected, fontClass = i_h4, leftIcon, rightIcon, ...rest } = props;
+    const { text, disabled, variant, selected, fontClass = i_h4, leftIcon, leftIconElement, rightIcon, ...rest } = props;
 
     const themeColor = {
         outline: {
@@ -326,6 +327,7 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
             {...rest}
         >
             {leftIcon && <Image src={leftIcon} mr="6px"></Image>}
+            {leftIconElement && leftIconElement}
             {text}
             {rightIcon && rightIcon}
         </Flex>
