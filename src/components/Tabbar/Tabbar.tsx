@@ -74,6 +74,10 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
                             temp[index] = !isOpenList[index];
                             setOpenList(temp);
                             if (page.address) {
+                                if (page.address.slice(0, 4) === 'http') {
+                                    window.open(page.address);
+                                    return;
+                                }
                                 setSelectedIndex(index);
                                 if (!clickChildren) {
                                     history.push(page.address);
