@@ -1,11 +1,25 @@
-import { Center, Image, useToast, ToastId, useColorMode, Text } from '@chakra-ui/react';
+import { Center, useToast, ToastId, useColorMode, Text, HStack, Stack, Divider } from '@chakra-ui/react';
 import Card from '../Card/Card';
 import CloseButton from '../Buttons/CloseButton/CloseButton';
 import { getColorThemeSelector } from '../../utils/funcs';
-import { i_text_copy } from '../../style';
+import { i_text_copy, i_text_copy_bold } from '../../style';
 import useIsMobile from '../../hooks/useIsMobile';
+import InfoIcon from '../Icon/InfoIcon';
+import SuccessIcon from '../Icon/SuccessIcon';
+import WarningIcon from '../Icon/WarningIcon';
+import ErrorIcon from '../Icon/ErrorIcon';
+import ExtralLinkIcon from '../Icon/ExtralLinkIcon';
 
-type Type = 'info' | 'error' | 'alert';
+export enum ToastType {
+    info = 'info',
+    success = 'success',
+    warning = 'warning',
+    error = 'error',
+}
+export type ToastLink = {
+    title: string;
+    link: string;
+};
 
 export const useCustomToast = () => {
     const toast = useToast();
@@ -14,41 +28,70 @@ export const useCustomToast = () => {
 
     const theme = {
         info: {
-            img: '/assets/images/info.svg',
+            img: <InfoIcon />,
         },
-        alert: {
-            img: '/assets/images/alert.svg',
+        success: {
+            img: <SuccessIcon />,
+        },
+        warning: {
+            img: <WarningIcon />,
         },
         error: {
-            img: '/assets/images/error.svg',
+            img: <ErrorIcon />,
         },
     };
 
-    return (type: string, value: any) => {
+    return (type: string, title: any, content?: any, toastLink?: ToastLink) => {
         const a = toast({
             position: 'bottom-right',
-            duration: 90000,
+            duration: 900000,
             render: function render() {
                 return (
-                    <Card variant="base" borderRadius="4px" w={isMobile ? '350px' : '400px'} h="70px" position="relative">
-                        <Image position="absolute" left="20px" bottom="22px" w="25px" h="25px" src={theme[type as Type].img} />
-                        <Center position="absolute" w="70%" h="100%" left="60px" top="0" alignItems="center">
-                            {typeof value === 'string' ? (
-                                <Text className={i_text_copy} color={colorTheme('tertiary.600', 'tertiary.50')} fontSize="12px" w="100%">
-                                    {value}
-                                </Text>
+                    <Card variant="base" borderRadius="4px" w={isMobile ? '350px' : '400px'} minH="50px" position="relative">
+                        <Center w="100%" h="100%" pl="18px" py="14px">
+                            {type ? (
+                                <HStack w="100%" borderRadius="6px">
+                                    {theme[type as ToastType].img}
+                                    <Divider h="66px" orientation="vertical" ml="12px !important" mr="8px !important"></Divider>
+                                    <Stack maxW={isMobile ? '225px' : '275px'}>
+                                        <Text className={i_text_copy_bold} color={colorTheme('#3D3062', '#FFFFFF')}>
+                                            {title}
+                                        </Text>
+                                        {content && (
+                                            <Text className={i_text_copy} color={colorTheme('#A7A1AC', '#7E7B86')}>
+                                                {content}
+                                            </Text>
+                                        )}
+                                        {toastLink && (
+                                            <HStack
+                                                maxW={isMobile ? '225px' : '275px'}
+                                                cursor="pointer"
+                                                onClick={() => {
+                                                    window.open(toastLink.link);
+                                                }}
+                                            >
+                                                <Text className={i_text_copy} color="#4F95FF">
+                                                    {toastLink.title}
+                                                    <Text h="10px" as="span" display="inline-block" ml="8px">
+                                                        <ExtralLinkIcon></ExtralLinkIcon>
+                                                    </Text>
+                                                </Text>
+                                            </HStack>
+                                        )}
+                                    </Stack>
+                                </HStack>
                             ) : (
-                                value
+                                content
                             )}
+                            <CloseButton
+                                pos="absolute"
+                                right="18px"
+                                top="18px"
+                                onClose={() => {
+                                    toast.close(a as ToastId);
+                                }}
+                            />
                         </Center>
-                        <CloseButton
-                            position="absolute"
-                            right="20px"
-                            bottom="20px"
-                            onClose={() => {
-                                toast.close(a as ToastId);
-                            }}
-                        />
                     </Card>
                 );
             },
