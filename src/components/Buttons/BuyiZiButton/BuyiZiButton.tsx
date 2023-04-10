@@ -15,7 +15,7 @@ const BuyiZiButton: React.FC<BuyiZiButtonProps> = (props) => {
     const { expand, tokenPrice, onClick, imageProps, ...rest } = props;
     const mobile = useIsMobile();
 
-    console.info('tokenPrice   ', tokenPrice);
+    //console.info('tokenPrice   ', tokenPrice);
     return (
         <CustomButton
             hidden={!expand && mobile}
