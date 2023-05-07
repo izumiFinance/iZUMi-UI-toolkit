@@ -2,10 +2,10 @@ export const links = {
     docs: 'https://docs.izumi.finance',
     developerDocs: 'https://developer.izumi.finance',
     github: 'https://github.com/IzumiFinance/',
-    //miningProtocol: 'https://izumi.finance/paper/liquidity-mining.pdf',
+    //miningProtocol: 'https://assets.izumi.finance/paper/liquidity-mining.pdf',
     miningProtocol:
         'https://izumi-finance.medium.com/announcement-of-izi-eth-and-usdc-usdt-liquidity-mining-program-on-uniswap-v3-397705303e08',
-    dswapProtocol: 'https://izumi.finance/paper/dswap.pdf',
+    dswapProtocol: 'https://assets.izumi.finance/paper/dswap.pdf',
     telegram: 'https://t.me/joinchat/e7idO_QU_21iY2E9',
     telegramCN: 'https://t.me/iZUMi_Finance_CN',
     telegramEN: 'https://t.me/izumifinance',
