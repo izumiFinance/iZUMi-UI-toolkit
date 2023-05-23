@@ -44,9 +44,10 @@ const Info = chakra(
                     alignItems="center"
                     justifyContent="start"
                     color={labelColor ? labelColor : undefined}
+                    {...labelStyle}
                 >
                     {typeof label === 'string' ? (
-                        <Heading level="6" whiteSpace="nowrap" {...labelStyle}>
+                        <Heading level="6" whiteSpace="nowrap">
                             {label}
                         </Heading>
                     ) : (
