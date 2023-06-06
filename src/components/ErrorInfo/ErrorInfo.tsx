@@ -1,4 +1,5 @@
 import { BoxProps, HStack, Text, Image, useColorMode } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import { i_text_copy_bold } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
 
@@ -8,6 +9,7 @@ type ErrorInfoProps = {
 export const ErrorInfo: React.FC<ErrorInfoProps> = (props) => {
     const { content, ...rest } = props;
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { t } = useTranslation();
 
     return (
         <HStack
@@ -20,7 +22,7 @@ export const ErrorInfo: React.FC<ErrorInfoProps> = (props) => {
         >
             <Image boxSize="11px" src="/assets/errorInfo/close.svg"></Image>
             <Text className={i_text_copy_bold} lineHeight="14px" letterSpacing="0.02em" color={'#FFFFFF'}>
-                {content}
+                {content && t(content)}
             </Text>
         </HStack>
     );
