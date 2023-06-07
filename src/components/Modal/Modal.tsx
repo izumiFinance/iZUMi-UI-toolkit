@@ -12,10 +12,11 @@ type ModalProps = {
     modalBg?: any;
     titleProps?: BoxProps;
     contentProps?: BoxProps;
+    isShowClose?: boolean;
 } & BoxProps;
 
 export const Modal: React.FC<ModalProps> = (props) => {
-    const { isOpen, onClose, title, children, modalBg, titleProps, contentProps, ...rest } = props;
+    const { isOpen, onClose, title, children, modalBg, titleProps, contentProps, isShowClose = true, ...rest } = props;
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
     const bgColor = modalBg ?? colorTheme('#ffffff', '#211834');
     return isOpen ? (
@@ -71,7 +72,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
                     ) : (
                         title
                     )}
-                    <CloseButton onClose={onClose} />
+                    {isShowClose && <CloseButton onClose={onClose} />}
                 </HStack>
                 <Box px={{ base: '22px', lg: '50px' }} {...contentProps}>
                     {children}
