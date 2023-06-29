@@ -124,7 +124,7 @@ export const CustomNumberInput: React.FC<
                     h="25px"
                     textAlign={'end'}
                     className={fontClass || i_h3}
-                    fontSize={style.inputFontSize}
+                    fontSize={{ base: style.inputFontSize, sm: '16px', xxl: style.inputFontSize }}
                     value={isTyping ? localValue : inputValue || ''}
                     onChange={(e: any) => {
                         onChange(e);
@@ -182,7 +182,12 @@ export const CustomNumberInput: React.FC<
                     //type="number"
                     textAlign={'center'}
                     className={fontClass || i_h3}
-                    fontSize={style.inputFontSize}
+                    fontSize={{ base: style.inputFontSize, sm: '14px', xxl: style.inputFontSize }}
+                    fontFamily={{
+                        base: 'Montserrat-Bold !important',
+                        sm: 'Montserrat-SemiBold !important',
+                        xxl: 'Montserrat-Bold !important',
+                    }}
                     value={isTyping ? localValue : inputValue || ''}
                     onChange={(e: any) => {
                         onChange(e);
