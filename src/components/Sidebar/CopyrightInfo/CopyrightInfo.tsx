@@ -15,7 +15,7 @@ const CopyrightInfo: React.FC = () => {
                     x="-0.501"
                     y="7.375"
                 >
-                    @2021-2022 iZUMi. &nbsp; {t('All rights reserved.')}
+                    @2021-2023 iZUMi. &nbsp; {t('All rights reserved.')}
                 </text>
             </svg>
         </Box>
