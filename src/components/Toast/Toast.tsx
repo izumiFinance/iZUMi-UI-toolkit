@@ -44,7 +44,7 @@ export const useCustomToast = () => {
     return (type: string, title: any, content?: any, toastLink?: ToastLink) => {
         const a = toast({
             position: 'bottom-right',
-            duration: 90000,
+            duration: 10000,
             render: function render() {
                 return (
                     <Card variant="base" borderRadius="4px" w={isMobile ? '350px' : '400px'} minH="50px" position="relative">
