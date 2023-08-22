@@ -66,7 +66,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
                     {...titleProps}
                 >
                     {typeof title === 'string' ? (
-                        <Text className={i_text_copy_bold} fontSize="18px">
+                        <Text className={i_text_copy_bold} fontSize="18px !important">
                             {title}
                         </Text>
                     ) : (
