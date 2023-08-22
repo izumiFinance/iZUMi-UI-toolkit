@@ -1,6 +1,6 @@
 import { BoxProps, useColorMode, Image, Flex } from '@chakra-ui/react';
 import React, { ReactElement } from 'react';
-import { i_h4 } from '../../../style';
+import { i_h5 } from '../../../style';
 import { getColorThemeSelector } from '../../../utils/funcs';
 
 export type ButtonProps = {
@@ -36,7 +36,7 @@ export type ButtonProps = {
 
 const CustomButton: React.FC<ButtonProps> = (props) => {
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
-    const { text, disabled, variant, selected, fontClass = i_h4, leftIcon, leftIconElement, rightIcon, ...rest } = props;
+    const { text, disabled, variant, selected, fontClass = i_h5, leftIcon, leftIconElement, rightIcon, ...rest } = props;
 
     const themeColor = {
         outline: {

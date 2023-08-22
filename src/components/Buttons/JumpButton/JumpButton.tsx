@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon, Image } from '@chakra-ui/react';
 import { ButtonProps } from '../CustomButton/CustomButton';
 import CustomButton from '../CustomButton/CustomButton';
-import { i_text_d } from '../../../style';
+import { i_text_copy } from '../../../style';
 import { useHistory } from 'react-router';
 import placeholder from '../../../assets/placeholder.png';
 
@@ -27,8 +27,7 @@ const JumpButton: React.FC<JumpButtonProps> = (props) => {
                     text={text}
                     w="204px"
                     h="50px"
-                    fontClass={i_text_d}
-                    fontSize="12px"
+                    fontClass={i_text_copy}
                     onClick={() => {
                         history.push({
                             pathname: target,
@@ -76,7 +75,7 @@ const JumpButton: React.FC<JumpButtonProps> = (props) => {
                             },
                         });
                     }}
-                    {...rest as any}
+                    {...(rest as any)}
                 />
             )}
         </>

@@ -1,7 +1,7 @@
 import { HStack, Button, Input, useColorMode, Tooltip, BoxProps, useOutsideClick, Text } from '@chakra-ui/react';
 import React, { useCallback, useState } from 'react';
 import { getColorThemeSelector } from '../../../utils/funcs';
-import { i_h3, i_text_copy } from '../../../style';
+import { i_h3, i_h4, i_text_copy } from '../../../style';
 import { useTranslation } from 'react-i18next';
 import { AdaptationMode } from '../../layout/PageLayout';
 
@@ -181,7 +181,7 @@ export const CustomNumberInput: React.FC<
                     ref={inputFocusRef}
                     //type="number"
                     textAlign={'center'}
-                    className={fontClass || i_h3}
+                    className={fontClass || i_h4}
                     fontSize={{ base: style.inputFontSize, sm: '14px', xxl: style.inputFontSize }}
                     fontFamily={{
                         base: 'Montserrat-Bold !important',
