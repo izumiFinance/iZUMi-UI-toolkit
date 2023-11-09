@@ -318,8 +318,7 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
             {...customStyle()}
             disabled={disabled}
             _disabled={{
-                background: themeColor.disable.base,
-                color: themeColor.disable.font,
+                opacity: 0.3,
                 cursor: 'not-allowed',
             }}
             alignItems="center"
