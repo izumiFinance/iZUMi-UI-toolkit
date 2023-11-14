@@ -25,6 +25,7 @@ export const SearchInput: React.FC<SearchInputProps> = (props) => {
                 onChange={(e: any) => onSearchKeyChange(e)}
                 value={value || ''}
                 bg={colorTheme('#F9F9FB', '#140E28')}
+                {...rest}
             />
             <InputRightElement h="100%" mt="4px">
                 <SearchIcon boxSize={5} />
