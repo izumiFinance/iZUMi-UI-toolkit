@@ -29,7 +29,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
                 bg="black"
                 opacity={colorTheme(0.15, 0.4)}
                 position="fixed"
-                zIndex={10}
+                zIndex={8}
                 onClick={() => {
                     onClose();
                 }}
@@ -38,7 +38,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
             <Card
                 variant="deep2"
                 borderRadius="2px"
-                zIndex={11}
+                zIndex={9}
                 position="fixed"
                 top="50%"
                 left="50%"

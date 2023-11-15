@@ -47,7 +47,14 @@ export const useCustomToast = () => {
             duration: 10000,
             render: function render() {
                 return (
-                    <Card variant="base" borderRadius="4px" w={isMobile ? '350px' : '400px'} minH="50px" position="relative">
+                    <Card
+                        variant="base"
+                        borderRadius="4px"
+                        w={isMobile ? '350px' : '400px'}
+                        minH="50px"
+                        position="relative"
+                        bg={colorTheme('#fff', '#1E2631')}
+                    >
                         <Center w="100%" h="100%" pl="18px" py="14px">
                             {type ? (
                                 <HStack w="100%" borderRadius="6px">
