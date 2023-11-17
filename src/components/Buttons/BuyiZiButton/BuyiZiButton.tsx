@@ -9,10 +9,11 @@ type BuyiZiButtonProps = {
     tokenPrice: string;
     onClick: any;
     imageProps?: ChakraProps;
+    textProps?: ChakraProps;
 } & BoxProps;
 
 const BuyiZiButton: React.FC<BuyiZiButtonProps> = (props) => {
-    const { expand, tokenPrice, onClick, imageProps, ...rest } = props;
+    const { expand, tokenPrice, onClick, imageProps, textProps, ...rest } = props;
     const mobile = useIsMobile();
 
     //console.info('tokenPrice   ', tokenPrice);
@@ -40,7 +41,12 @@ const BuyiZiButton: React.FC<BuyiZiButtonProps> = (props) => {
                                 fallbackSrc="/assets/sidebar/whiteLoading.gif"
                             ></Image>
                         ) : (
-                            <Text className={i_text_copy_bold} color="tertiary.50" mx={mobile ? '3px !important' : '6px !important'}>
+                            <Text
+                                className={i_text_copy_bold}
+                                color="tertiary.50"
+                                mx={mobile ? '3px !important' : '6px !important'}
+                                {...textProps}
+                            >
                                 ${/* --.-- */}
                                 {tokenPrice}
                             </Text>
