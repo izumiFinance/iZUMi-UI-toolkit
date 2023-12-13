@@ -20,6 +20,7 @@ export const CustomNumberInput: React.FC<
         setIsInputFocus?: any;
         unit?: string;
         type?: AdaptationMode;
+        inputProps?: BoxProps;
     } & BoxProps
 > = ({
     onInc,
@@ -35,6 +36,7 @@ export const CustomNumberInput: React.FC<
     setIsInputFocus,
     unit,
     type,
+    inputProps,
     ...rest
 }) => {
     const { t } = useTranslation();
@@ -214,6 +216,7 @@ export const CustomNumberInput: React.FC<
                             event.preventDefault(); // Cancel the native operation
                         }
                     }}
+                    {...inputProps}
                 />
             </Tooltip>
             {unit && (
