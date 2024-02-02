@@ -14,7 +14,7 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
     const { config } = pros;
     const { t } = useTranslation();
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
-    const [isOpenList, setOpenList] = useState(Array(config.pages.length).fill(false));
+    const [isOpenList, setOpenList] = useState(Array(config().pages.length).fill(false));
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const getImgUrl = (img: string | undefined) => {
         return colorTheme(process.env.PUBLIC_URL + `/assets/tabBar/light${img}`, process.env.PUBLIC_URL + `/assets/tabBar/dark${img}`);
@@ -30,7 +30,7 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
     useOutsideClick({
         ref: listFocusRef,
         handler: () => {
-            const temp = Array(config.pages.length).fill(false);
+            const temp = Array(config().pages.length).fill(false);
             setOpenList(temp);
         },
     });
@@ -39,13 +39,13 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
     const location = useLocation();
     useEffect(() => {
         const currentPath = location.pathname;
-        config.pages.map((item: any, index: number) => {
+        config().pages.map((item: any, index: number) => {
             const isFounded = item.address === currentPath || item.children.find((i: any) => i.address === currentPath);
             if (isFounded) {
                 setSelectedIndex(index);
             }
         });
-    }, [config.pages, location]);
+    }, [config().pages, location]);
 
     function isIOSDevice() {
         return !!navigator.platform && /iPhone/.test(navigator.platform);
@@ -61,16 +61,16 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
             bottom="0px"
             ref={listFocusRef}
         >
-            {config.pages.map((page: any, index: number) => {
+            {config().pages.map((page: any, index: number) => {
                 const isSelected = selectedIndex === index;
                 return (
                     <Flex
                         key={index}
-                        w={100 / config.pages.length + '%'}
+                        w={100 / config().pages.length + '%'}
                         h="37px"
                         mt="12px"
                         onClick={() => {
-                            const temp = Array(config.pages.length).fill(false);
+                            const temp = Array(config().pages.length).fill(false);
                             temp[index] = !isOpenList[index];
                             setOpenList(temp);
                             if (page.address) {
