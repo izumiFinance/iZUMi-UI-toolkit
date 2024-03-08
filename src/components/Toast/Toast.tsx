@@ -61,11 +61,11 @@ export const useCustomToast = () => {
                                     {theme[type as ToastType].img}
                                     <Divider h="66px" orientation="vertical" ml="12px !important" mr="8px !important"></Divider>
                                     <Stack maxW={isMobile ? '225px' : '275px'}>
-                                        <Text className={i_text_copy_bold} color={colorTheme('#3D3062', '#FFFFFF')}>
+                                        <Text className={i_text_copy_bold} color={colorTheme('#3D3062', '#FFFFFF')} noOfLines={5}>
                                             {title}
                                         </Text>
                                         {content && (
-                                            <Text className={i_text_copy} color={colorTheme('#A7A1AC', '#7E7B86')}>
+                                            <Text className={i_text_copy} color={colorTheme('#A7A1AC', '#7E7B86')} noOfLines={5}>
                                                 {content}
                                             </Text>
                                         )}
