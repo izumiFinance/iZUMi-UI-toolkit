@@ -14,7 +14,16 @@ const ColorModeSelect: React.FC<{ showNav: boolean; imgProps?: ImageProps; imgRe
     const [ref, isHovering] = useHover<any>();
 
     return (
-        <Flex direction="row" w="29px" h="30px" justify="start" align="center" borderRadius="20px" hidden={!showNav && mobile} {...rest}>
+        <Flex
+            direction="row"
+            w={{ base: 'unset', sm: '29px' }}
+            h="30px"
+            justify="start"
+            align="center"
+            borderRadius="20px"
+            hidden={!showNav && mobile}
+            {...rest}
+        >
             <Image
                 ref={imgRef || ref}
                 boxSize={showNav ? '25px' : '30px'}
