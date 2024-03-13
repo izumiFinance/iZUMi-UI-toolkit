@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
-const CopyrightInfo: React.FC = () => {
+const CopyrightInfo: React.FC<BoxProps> = (props) => {
     const { t } = useTranslation();
-
+    const { ...rest } = props;
     return (
-        <Box mb={{ base: '0px', sm: '66px' }} fontSize="9px" alignSelf="center" fontFamily="Lato" fontWeight="bold">
+        <Box mb={{ base: '0px', sm: '66px' }} fontSize="9px" alignSelf="center" fontFamily="Lato" fontWeight="bold" {...rest}>
             <svg xmlns="http://www.w3.org/2000/svg" width="170" height="10" viewBox="0 0 170 10">
                 <text
                     id="_2021_izumi_Finance._All_rights_reserved."
