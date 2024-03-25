@@ -3,7 +3,7 @@ import React from 'react';
 import { getColorThemeSelector } from '../../utils/funcs';
 
 type props = {
-    variant: 'blue' | 'purple' | 'orange' | 'grey';
+    variant: 'blue' | 'purple' | 'orange' | 'grey' | 'green';
     text: string;
     icon?: any;
 } & BoxProps;
@@ -28,6 +28,10 @@ export const CardTag: React.FC<props> = (props) => {
         grey: {
             color: colorTheme('primary.500', 'primary.50'),
             bg: colorTheme('primary.100', '#2252CC'),
+        },
+        green: {
+            color: colorTheme('#EAFFF9', '#EDF4FF'),
+            bg: colorTheme('#5CC4A4', '#4FAD6A'),
         },
     };
 
