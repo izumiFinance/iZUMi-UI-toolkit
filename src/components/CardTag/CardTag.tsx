@@ -37,7 +37,7 @@ export const CardTag: React.FC<props> = (props) => {
 
     return (
         <Tag
-            px="32px"
+            px={{ base: '20px', sm: '32px' }}
             // position="absolute"
             // top="0"
             // left="32px"
