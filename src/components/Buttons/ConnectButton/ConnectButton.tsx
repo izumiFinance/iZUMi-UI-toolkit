@@ -1,5 +1,6 @@
 import { Text, Flex, BoxProps, useColorMode, Box, Image } from '@chakra-ui/react';
 import React from 'react';
+import useIsMobile from '../../../hooks/useIsMobile';
 import { a_h5, i_text_d } from '../../../style';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import CustomButton from '../CustomButton/CustomButton';
@@ -13,7 +14,7 @@ type ConnectButtonProps = {
 const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
     const { Identicon, onClick, variant, ...rest } = props;
     const colorTheme = getColorThemeSelector(useColorMode().colorMode);
-
+    const isMobile = useIsMobile();
     return variant && variant === 'black' ? (
         <CustomButton
             variant="none"
@@ -40,7 +41,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
     ) : variant && variant === 'purple' ? (
         <CustomButton
             variant="none"
-            width="120px"
+            width={{ base: '120px', sm: '170px' }}
             height="32px"
             mr="40px"
             borderRadius="5px"
@@ -50,7 +51,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
             text={
                 <Flex direction="row" align="center" justify="center">
                     <Text className={i_text_d} as="span" fontSize="14px" fontWeight={600}>
-                        Connect
+                        {isMobile ? 'Connect' : 'Connect Wallet'}
                     </Text>
                     <Image boxSize="14px" src={'/assets/wallet/noWallet.svg'} ml="11px"></Image>
                 </Flex>
