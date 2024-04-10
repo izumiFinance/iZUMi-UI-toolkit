@@ -40,7 +40,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
     ) : variant && variant === 'purple' ? (
         <CustomButton
             variant="none"
-            width="170px"
+            width="120px"
             height="32px"
             mr="40px"
             borderRadius="5px"
@@ -50,7 +50,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
             text={
                 <Flex direction="row" align="center" justify="center">
                     <Text className={i_text_d} as="span" fontSize="14px" fontWeight={600}>
-                        Connect Wallet
+                        Connect
                     </Text>
                     <Image boxSize="14px" src={'/assets/wallet/noWallet.svg'} ml="11px"></Image>
                 </Flex>
