@@ -41,7 +41,13 @@ export const useCustomToast = () => {
         },
     };
 
-    return (type: string, title: any, content?: any, toastLink?: ToastLink) => {
+    return (toatType: string, title: any, content?: any, toastLink?: ToastLink) => {
+        let type = toatType;
+        if (typeof title === 'string') {
+            if (title.includes('Transaction was not mined')) {
+                type = ToastType.info;
+            }
+        }
         const a = toast({
             position: 'bottom-right',
             duration: 10000,
