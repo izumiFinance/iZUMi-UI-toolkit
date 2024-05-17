@@ -13,6 +13,7 @@ const theme = extendTheme({
         sm: '30em', // 480px
         md: '48em', // 768px
         lg: '64em', // 1024px
+        lg2: '73.75em', // 1180px
         xl: '80em', // 1280px
         xxl: '90.01em', // 1440px
         xlp1: '100em', // 1600px
