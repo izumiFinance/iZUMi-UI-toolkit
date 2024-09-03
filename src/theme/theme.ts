@@ -98,7 +98,7 @@ const theme = extendTheme({
     styles: {
         global: (props: any) => ({
             'html, body': {
-                color: mode('#24193C', '#ffffff')(props),
+                color: mode('#0F0740', '#ffffff')(props),
                 bg: mode('#ffffff', '#282828')(props),
                 overflow: 'hidden',
             },
