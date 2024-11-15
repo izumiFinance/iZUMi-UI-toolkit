@@ -20,7 +20,7 @@ export const ErrorInfo: React.FC<ErrorInfoProps> = (props) => {
             pl={{ base: '19px', sm: '25px' }}
             {...rest}
         >
-            <Image boxSize="11px" src="/assets/errorInfo/close.svg"></Image>
+            <Image boxSize="11px" src="/assets/errorInfo/close.svg" fallbackSrc="/assets/errorInfo/close.svg"></Image>
             <Text className={i_text_copy_bold} lineHeight="14px" letterSpacing="0.02em" color={'#FFFFFF'}>
                 {content && t(content)}
             </Text>
