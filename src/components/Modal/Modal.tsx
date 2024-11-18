@@ -7,7 +7,7 @@ import { getColorThemeSelector } from '../../utils/funcs';
 type ModalProps = {
     isOpen: boolean | any;
     onClose: any;
-    title: string | any;
+    title: any;
     children: any;
     modalBg?: any;
     titleProps?: BoxProps;
