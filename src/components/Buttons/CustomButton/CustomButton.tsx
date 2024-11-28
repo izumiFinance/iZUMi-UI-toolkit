@@ -323,6 +323,10 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
             }}
             alignItems="center"
             justifyContent="center"
+            userSelect={{ base: 'none', sm: 'auto' }}
+            sx={{
+                WebkitTapHighlightColor: 'transparent',
+            }}
             {...rest}
         >
             {leftIcon && <Image src={leftIcon} mr="6px"></Image>}
