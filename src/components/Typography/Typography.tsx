@@ -6,9 +6,8 @@ export type HeadingProps = PropsWithChildren<{
 }> &
     BoxProps;
 
-export const Heading = chakra(
-    ({ level, children, ...chakraProps }: HeadingProps) =>
-        React.createElement(`h${level}`, chakraProps, children)
+export const Heading = chakra(({ level, children, ...chakraProps }: HeadingProps) =>
+    React.createElement(`h${level}`, chakraProps, children)
 );
 
 export type TextProps = PropsWithChildren<{
@@ -51,6 +50,7 @@ export const Text = chakra(({ variant, ...chakraProps }: TextProps) => {
             fontSize={style.fontSize}
             fontFamily={style.fontFamily}
             lineHeight={style.lineHeight}
+            userSelect={{ base: 'none', sm: 'auto' }}
             {...chakraProps}
         />
     );
