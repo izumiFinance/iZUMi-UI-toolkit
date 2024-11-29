@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Text, useColorMode, BoxProps, Drawer, DrawerContent, DrawerOverlay } from '@chakra-ui/react';
+import { Box, Flex, HStack, Text, useColorMode, BoxProps } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Card from '../../components/Card/Card';
 import CloseButton from '../../components/Buttons/CloseButton/CloseButton';
@@ -29,7 +29,6 @@ export const Modal: React.FC<ModalProps> = (props) => {
         <AnimatePresence>
             {isOpen && (
                 <>
-                    {/* 背景遮罩 */}
                     <MotionBox
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -42,22 +41,21 @@ export const Modal: React.FC<ModalProps> = (props) => {
                         top="0"
                         left="0"
                         zIndex={8}
-                        onClick={onClose} // 点击外部触发关闭
+                        onClick={onClose}
                         my="0px !important"
                         mx="0px !important"
                     ></MotionBox>
 
-                    {/* 弹窗内容 */}
                     <MotionBox
-                        initial={{ y: '100%' }} // 初始状态：在屏幕下方
-                        animate={{ y: '0%' }} // 动画目标状态：完全显示
-                        exit={{ y: '100%' }} // 退出状态：回到屏幕下方
+                        initial={{ y: '100%' }}
+                        animate={{ y: '0%' }}
+                        exit={{ y: '100%' }}
                         transition={{ duration: 0.3 }}
                         position="fixed"
                         bottom="0"
                         left="0"
                         w="100%"
-                        maxH="95%" // 确保父容器限制了高度
+                        maxH="95%"
                         zIndex={9}
                         my="0px !important"
                         mx="0px !important"
@@ -73,10 +71,9 @@ export const Modal: React.FC<ModalProps> = (props) => {
                                 },
                             }}
                             pb={{ base: '35px', sm: '43px' }}
-                            borderRadius="20px 20px 0px 0px"
+                            borderRadius="32px 32px 0px 0px"
                             {...rest}
                         >
-                            {/* 标题部分 */}
                             <HStack
                                 justifyContent="space-between"
                                 top="0"
@@ -99,7 +96,6 @@ export const Modal: React.FC<ModalProps> = (props) => {
                                 {isShowClose && <CloseButton onClose={onClose} />}
                             </HStack>
 
-                            {/* 内容部分 */}
                             <Box px={{ base: '22px', lg: '50px' }} {...contentProps}>
                                 {children}
                             </Box>
