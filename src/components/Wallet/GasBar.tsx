@@ -5,7 +5,7 @@ import { i_text_copy_bold } from '../../style';
 import Card from '../Card/Card';
 
 type GasBarProps = {
-    gasPrice: number;
+    gasPrice: string;
 } & BoxProps;
 
 const GasBar: React.FC<GasBarProps> = (props) => {
