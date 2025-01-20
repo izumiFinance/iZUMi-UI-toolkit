@@ -69,13 +69,12 @@
     "typestyle": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "dev": "cross-env VITE_ENV=development react-scripts start",
-    "local": "cross-env VITE_ENV=local react-scripts start",
-    "prod": "cross-env VITE_ENV=production react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "vite build",
+    "start": "vite",
+    "dev": "vite --mode development",
+    "local": "vite --mode local",
+    "prod": "vite --mode production",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": "react-app"
