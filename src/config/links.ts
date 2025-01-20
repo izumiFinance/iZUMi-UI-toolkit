@@ -23,6 +23,6 @@ export const links = {
     gateiZiLink: 'https://www.gateio.ch/cn/trade/IZI_USDT',
     bybitiZiLink: 'https://www.bybit.com/en-US/trade/spot/IZI/USDT',
     mexciZiLink: 'https://www.mexc.com/zh-CN/exchange/IZI_USDT',
-    analyticLink: process.env.REACT_APP_ENV === 'development' ? 'https://analytic-alpha.izumi.finance' : 'https://analytics.izumi.finance',
+    analyticLink: import.meta.env.VITE_ENV === 'development' ? 'https://analytic-alpha.izumi.finance' : 'https://analytics.izumi.finance',
     veiZilink: 'https://etherscan.io/address/0xb56a454d8dac2ad4cb82337887717a2a427fcd00',
 };

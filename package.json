@@ -70,9 +70,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "cross-env REACT_APP_ENV=development react-scripts start",
-    "local": "cross-env REACT_APP_ENV=local react-scripts start",
-    "prod": "cross-env REACT_APP_ENV=production react-scripts start",
+    "dev": "cross-env VITE_ENV=development react-scripts start",
+    "local": "cross-env VITE_ENV=local react-scripts start",
+    "prod": "cross-env VITE_ENV=production react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

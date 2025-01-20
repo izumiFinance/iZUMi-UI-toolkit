@@ -17,7 +17,7 @@ const VeiZiLinkButton: React.FC<Props> = (props) => {
             borderRadius="3px"
             text={
                 <HStack w="100%" mx="auto">
-                    <Image w="19px" h="19px" src={process.env.PUBLIC_URL + '/assets/tokens/veiZi.svg'} ml={expand ? '12px' : '8px'} />
+                    <Image w="19px" h="19px" src={ '/assets/tokens/veiZi.svg'} ml={expand ? '12px' : '8px'} />
                 </HStack>
             }
             onClick={() => {

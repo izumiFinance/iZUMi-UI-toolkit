@@ -13,7 +13,7 @@ const Logo: ComponentWithAs<'img', ImageProps> = (props) => {
         '/assets/sidebar/lightLogo.svg',
         '/assets/sidebar/darkLogo.svg'
     );
-    return <Image {...props} src={process.env.PUBLIC_URL + src} />;
+    return <Image {...props} src={ src} />;
 };
 
 export default Logo;

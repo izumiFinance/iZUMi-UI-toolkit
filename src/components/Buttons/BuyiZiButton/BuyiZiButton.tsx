@@ -29,7 +29,7 @@ const BuyiZiButton: React.FC<BuyiZiButtonProps> = (props) => {
                     <Image
                         w={mobile ? '14px' : '19px'}
                         h={mobile ? '14px' : '19px'}
-                        src={process.env.PUBLIC_URL + '/assets/tokens/iZiWhite.svg'}
+                        src={ '/assets/tokens/iZiWhite.svg'}
                         {...imageProps}
                     />
                     {expand &&

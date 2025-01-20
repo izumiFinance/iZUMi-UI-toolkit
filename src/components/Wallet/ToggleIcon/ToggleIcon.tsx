@@ -17,8 +17,8 @@ const ToggleIcon: React.FC<Props> = (props) => {
     const backgroundColor = colorTheme('#FFFFFF', '#3B365B');
     const lineColor = colorTheme('#2D264B', '#F2ECFF');
     const arrowImg = colorTheme(
-        process.env.PUBLIC_URL + '/assets/sidebar/lightArrow.svg',
-        process.env.PUBLIC_URL + '/assets/sidebar/darkArrow.svg'
+         '/assets/sidebar/lightArrow.svg',
+         '/assets/sidebar/darkArrow.svg'
     );
 
     return (

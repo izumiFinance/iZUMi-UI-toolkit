@@ -52,7 +52,7 @@ const Sidebar: React.FC<Props> = (pros) => {
             />
             <Box flexShrink={0} w="100%" height="140px" position="relative" mb="10px !important">
                 <Image
-                    src={process.env.PUBLIC_URL + '/assets/home/iziLogo/logo.svg'}
+                    src={ '/assets/home/iziLogo/logo.svg'}
                     width="38px"
                     height="38px"
                     position="absolute"
@@ -65,8 +65,8 @@ const Sidebar: React.FC<Props> = (pros) => {
                 />
                 <Image
                     src={colorTheme(
-                        process.env.PUBLIC_URL + '/assets/home/iziLogo/Darktext.svg',
-                        process.env.PUBLIC_URL + '/assets/home/iziLogo/Whitetext.svg'
+                         '/assets/home/iziLogo/Darktext.svg',
+                         '/assets/home/iziLogo/Whitetext.svg'
                     )}
                     width={showNav ? '80px' : '0px'}
                     height={showNav ? '25px' : '0px'}
@@ -82,7 +82,7 @@ const Sidebar: React.FC<Props> = (pros) => {
                     transitionDuration="0.2s"
                     transitionTimingFunction="ease"
                     transitionDelay={showNav ? '0.3s' : '0s'}
-                    fallbackSrc={process.env.PUBLIC_URL + '/assets/home/iziLogo/Darktext.svg'}
+                    fallbackSrc={ '/assets/home/iziLogo/Darktext.svg'}
                 />
             </Box>
             <Navbar setShowNav={setShowNav} showNav={showNav} />

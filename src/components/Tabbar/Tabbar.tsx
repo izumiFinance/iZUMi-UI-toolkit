@@ -17,12 +17,12 @@ export const TabBar: React.FC<TabBarProps> = (pros) => {
     const [isOpenList, setOpenList] = useState(Array(config().pages.length).fill(false));
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const getImgUrl = (img: string | undefined) => {
-        return colorTheme(process.env.PUBLIC_URL + `/assets/tabBar/light${img}`, process.env.PUBLIC_URL + `/assets/tabBar/dark${img}`);
+        return colorTheme( `/assets/tabBar/light${img}`,  `/assets/tabBar/dark${img}`);
     };
     const getSelectedImgUrl = (img: string | undefined) => {
         return colorTheme(
-            process.env.PUBLIC_URL + `/assets/tabBar/selected/light${img}`,
-            process.env.PUBLIC_URL + `/assets/tabBar/selected/dark${img}`
+             `/assets/tabBar/selected/light${img}`,
+             `/assets/tabBar/selected/dark${img}`
         );
     };
     const history = useHistory();

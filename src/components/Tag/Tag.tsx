@@ -52,7 +52,7 @@ export const CustomTag: React.FC<props> = (props) => {
             {...rest}
         >
             <HStack>
-                {icon && <Image src={process.env.PUBLIC_URL + icon} h="12px" />}
+                {icon && <Image src={ icon} h="12px" />}
                 <Text
                     className={i_text_copy}
                     color={theme[variant].color}

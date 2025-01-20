@@ -32,7 +32,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
                     <Image
                         boxSize="23px"
                         ml={{ base: '5px', sm: '12px' }}
-                        src={process.env.PUBLIC_URL + '/assets/wallet/walletRight.svg'}
+                        src={ '/assets/wallet/walletRight.svg'}
                     ></Image>
                 </Flex>
             }

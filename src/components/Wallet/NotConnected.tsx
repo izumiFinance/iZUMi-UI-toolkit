@@ -12,7 +12,7 @@ const NotConnected: React.FC<{ onConnect: () => void }> = (props) => {
     return (
         <VStack as={Card} p="20px 16px" w="266px" bg={colorTheme('undefined', '#34294A')}>
             <Image
-                src={process.env.PUBLIC_URL + colorTheme('/assets/wallet/not-connected.png', '/assets/wallet/notConnectedDark.png')}
+                src={ colorTheme('/assets/wallet/not-connected.png', '/assets/wallet/notConnectedDark.png')}
                 fallbackSrc={placeholder}
                 w="118px"
                 h="141px"

@@ -17,7 +17,7 @@ const GasBar: React.FC<GasBarProps> = (props) => {
                 <Image
                     w="14px"
                     h="16px"
-                    src={process.env.PUBLIC_URL + colorTheme('/assets/wallet/lightGas.svg', '/assets/wallet/darkGas.svg')}
+                    src={ colorTheme('/assets/wallet/lightGas.svg', '/assets/wallet/darkGas.svg')}
                 />
                 <Text color={colorTheme('#2FC562', '#9FFB7F')} className={i_text_copy_bold}>
                     {(Number(gasPrice) / 1e9).toFixed(0)}
