@@ -41,15 +41,15 @@ const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
             height="32px"
             mr="40px"
             borderRadius="5px"
-            bg="#fff"
+            bg="#7F4AFE"
             onClick={onClick}
-            color={colorTheme('#4AA1CA', 'tertiary.100')}
+            color={colorTheme('#FFFFFF', 'tertiary.100')}
             text={
                 <Flex direction="row" align="center" justify="center">
                     <Text className={i_text_d} as="span" fontSize="14px" fontWeight={600}>
                         {isMobile ? 'Connect' : 'Connect Wallet'}
                     </Text>
-                    <Image boxSize="14px" src={'/assets/wallet/noWallet.svg'} fallbackSrc="/assets/wallet/noWallet.svg" ml="11px"></Image>
+                    <Image boxSize="14px" src={'/assets/wallet/noWallet.svg'} ml="11px"></Image>
                 </Flex>
             }
             {...rest}

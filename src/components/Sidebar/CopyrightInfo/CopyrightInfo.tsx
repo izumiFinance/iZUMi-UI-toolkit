@@ -16,13 +16,13 @@ const CopyrightInfo: React.FC<CopyrightInfoProps> = (props) => {
                 viewBox={svgWidth ? `0 0 ${svgWidth} 10` : '0 0 180 10'}
             >
                 <text
-                    id="_2025_SugarSwap._All_rights_reserved."
-                    data-name="@2025 SugarSwap. All rights reserved."
+                    id="_2021_izumi_Finance._All_rights_reserved."
+                    data-name="@2021 izumi Finance. All rights reserved."
                     className="copyright-text"
                     x="-0.501"
                     y="7.375"
                 >
-                    @2025 SugarSwap. &nbsp; {t('All rights reserved.')}
+                    @2021-2024 iZUMi. &nbsp; {t('All rights reserved.')}
                 </text>
             </svg>
         </Box>
