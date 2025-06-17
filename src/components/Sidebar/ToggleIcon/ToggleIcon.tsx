@@ -1,6 +1,7 @@
-import { Box, Flex, Image, BoxProps, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, Image, BoxProps } from '@chakra-ui/react';
 import React from 'react';
 import { getColorThemeSelector } from '../../../utils/funcs';
+import { useTheme } from 'next-themes';
 
 export type Props = {
     setShowNav: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,14 +10,12 @@ export type Props = {
 
 const ToggleIcon: React.FC<Props> = (props) => {
     const { setShowNav, showNav, ...rest } = props;
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     const backgroundColor = colorTheme('#FFFFFF', '#3B365B');
     const lineColor = colorTheme('#2D264B', '#F2ECFF');
-    const arrowImg = colorTheme(
-         '/assets/sidebar/lightArrow.svg',
-         '/assets/sidebar/darkArrow.svg'
-    );
+    const arrowImg = colorTheme('/assets/sidebar/lightArrow.svg', '/assets/sidebar/darkArrow.svg');
 
     return (
         <Flex
@@ -30,8 +29,7 @@ const ToggleIcon: React.FC<Props> = (props) => {
             width="42px"
             height="42px"
             _hover={{
-                boxShadow:
-                    '0px 2px 12px 0px rgba(164, 165, 180, 0.3), 0px 2px 9px 0px rgba(219, 219, 219, 0.32)',
+                boxShadow: '0px 2px 12px 0px rgba(164, 165, 180, 0.3), 0px 2px 9px 0px rgba(219, 219, 219, 0.32)',
             }}
             position="absolute"
             {...rest}

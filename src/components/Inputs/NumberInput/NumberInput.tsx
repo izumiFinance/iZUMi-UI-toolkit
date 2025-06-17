@@ -1,9 +1,10 @@
-import { HStack, Button, Input, useColorMode, Tooltip, BoxProps, useOutsideClick, Text } from '@chakra-ui/react';
+import { HStack, Button, Input, Tooltip, BoxProps, useOutsideClick, Text } from '@chakra-ui/react';
 import React, { useCallback, useState } from 'react';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import { i_h3, i_h4, i_text_copy } from '../../../style';
 import { useTranslation } from 'react-i18next';
 import { AdaptationMode } from '../../layout/PageLayout';
+import { useTheme } from 'next-themes';
 
 export const CustomNumberInput: React.FC<
     {
@@ -43,6 +44,8 @@ export const CustomNumberInput: React.FC<
     const [localValue, setLocalValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const [showErrorInfo, setShowErrorInfo] = useState(false);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const styleFun = () => {
         switch (size) {
             case 'xs':
@@ -92,8 +95,6 @@ export const CustomNumberInput: React.FC<
         setLocalValue('');
         setShowErrorInfo(true);
     }, [setIsTyping, localValue, onBlur, setShowErrorInfo]);
-
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
 
     const inputFocusRef = React.useRef<any | null>(null);
     useOutsideClick({

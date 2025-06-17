@@ -1,14 +1,16 @@
-import { BoxProps, HStack, Text, Image, useColorMode } from '@chakra-ui/react';
+import { BoxProps, HStack, Text, Image } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { i_text_copy_bold } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
+import { useTheme } from 'next-themes';
 
 type ErrorInfoProps = {
     content?: string;
 } & BoxProps;
 export const ErrorInfo: React.FC<ErrorInfoProps> = (props) => {
     const { content, ...rest } = props;
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const { t } = useTranslation();
 
     return (

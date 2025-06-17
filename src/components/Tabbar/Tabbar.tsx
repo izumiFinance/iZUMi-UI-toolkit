@@ -1,10 +1,11 @@
-import { Flex, Menu, MenuButton, Text, useColorMode, VStack, Image, useOutsideClick, MenuList, MenuItem } from '@chakra-ui/react';
+import { Flex, Menu, MenuButton, Text, VStack, Image, useOutsideClick, MenuList, MenuItem } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useLocation } from 'react-router-dom';
 import { i_text_copy, i_text_d } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
+import { useTheme } from 'next-themes';
 
 export type TabBarProps = {
     config: any;
@@ -13,17 +14,15 @@ export type TabBarProps = {
 export const TabBar: React.FC<TabBarProps> = (pros) => {
     const { config } = pros;
     const { t } = useTranslation();
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const [isOpenList, setOpenList] = useState(Array(config().pages.length).fill(false));
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const getImgUrl = (img: string | undefined) => {
-        return colorTheme( `/assets/tabBar/light${img}`,  `/assets/tabBar/dark${img}`);
+        return colorTheme(`/assets/tabBar/light${img}`, `/assets/tabBar/dark${img}`);
     };
     const getSelectedImgUrl = (img: string | undefined) => {
-        return colorTheme(
-             `/assets/tabBar/selected/light${img}`,
-             `/assets/tabBar/selected/dark${img}`
-        );
+        return colorTheme(`/assets/tabBar/selected/light${img}`, `/assets/tabBar/selected/dark${img}`);
     };
     const history = useHistory();
     const listFocusRef = React.useRef<any | null>(null);

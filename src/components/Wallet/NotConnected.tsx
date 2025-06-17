@@ -1,18 +1,20 @@
-import { VStack, Image, useColorMode } from '@chakra-ui/react';
+import { VStack, Image } from '@chakra-ui/react';
 import Card from '../Card/Card';
 import { Heading, Text } from '../Typography/Typography';
 import CustomButton from '../Buttons/CustomButton/CustomButton';
 import { getColorThemeSelector } from '../../utils/funcs';
 import placeholder from '../../assets/placeholder.png';
 import { i_text_d } from '../../style';
+import { useTheme } from 'next-themes';
 
 const NotConnected: React.FC<{ onConnect: () => void }> = (props) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     return (
         <VStack as={Card} p="20px 16px" w="266px" bg={colorTheme('undefined', '#34294A')}>
             <Image
-                src={ colorTheme('/assets/wallet/not-connected.png', '/assets/wallet/notConnectedDark.png')}
+                src={colorTheme('/assets/wallet/not-connected.png', '/assets/wallet/notConnectedDark.png')}
                 fallbackSrc={placeholder}
                 w="118px"
                 h="141px"

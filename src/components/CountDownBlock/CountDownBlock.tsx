@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { i_text_copy, i_text_copy_bold, i_text_d } from '../../style';
 import { FiClock } from 'react-icons/fi';
-import { BoxProps, useColorMode, VStack, Text, Icon, HStack, Image } from '@chakra-ui/react';
+import { BoxProps, VStack, Text, Icon, HStack, Image } from '@chakra-ui/react';
 import { getColorThemeSelector } from '../../utils/funcs';
 import useInterval from 'ahooks/lib/useInterval';
 import Card from '../Card/Card';
 import { useTranslation } from 'react-i18next';
 import { AdaptationMode } from '../layout/PageLayout';
+import { useTheme } from 'next-themes';
 
 type BlockProps = {
     initialSeconds: number;
@@ -17,7 +18,8 @@ const CountDownBlock: React.FC<BlockProps> = (props) => {
     const { initialSeconds, type, ...rest } = props;
 
     const { t } = useTranslation();
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const [timeLeft, setTimeLeft] = useState(initialSeconds);
     const seconds = useMemo(() => Math.floor(timeLeft % 60), [timeLeft]);
     const minutes = useMemo(() => Math.floor((timeLeft / 60) % 60), [timeLeft]);

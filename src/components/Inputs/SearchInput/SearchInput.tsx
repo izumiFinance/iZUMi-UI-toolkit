@@ -1,7 +1,8 @@
 import { i_text_copy_bold } from '../../../style';
-import { Input, InputGroup, InputRightElement, InputProps, useColorMode } from '@chakra-ui/react';
+import { Input, InputGroup, InputRightElement, InputProps } from '@chakra-ui/react';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import { FaSearch } from 'react-icons/fa';
+import { useTheme } from 'next-themes';
 
 type SearchInputProps = {
     placeholder: string | any;
@@ -12,7 +13,8 @@ type SearchInputProps = {
 
 export const SearchInput: React.FC<SearchInputProps> = (props) => {
     const { placeholder, size, onSearchKeyChange, value, ...rest } = props;
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     return (
         <InputGroup {...rest}>

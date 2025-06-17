@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { a_display } from '../../../style';
 import { ArrowDownGreen } from '../../ArrowDownGreen/ArrowDownGreen';
 import CustomButton from '../../Buttons/CustomButton/CustomButton';
+import { useTheme } from 'next-themes';
+
 type DropDownButtonProps = {
     page: any;
     variant?: string;
@@ -10,10 +12,12 @@ type DropDownButtonProps = {
     buttonProps?: ChakraProps;
     menuListProps?: ChakraProps;
 };
+
 export const DropDownButton: React.FC<DropDownButtonProps> = (props) => {
     const { page, rightIcon, buttonProps, menuListProps } = props;
     const { isOpen, onOpen, onClose } = useDisclosure();
     const history = useHistory();
+    const { theme } = useTheme();
 
     return page.children.length === 0 ? (
         <CustomButton

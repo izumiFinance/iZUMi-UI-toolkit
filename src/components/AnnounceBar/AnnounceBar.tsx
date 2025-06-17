@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, Flex, BoxProps, useColorMode } from '@chakra-ui/react';
+import { Text, Flex, BoxProps } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import { getColorThemeSelector } from '../../utils/funcs';
+import { useTheme } from 'next-themes';
 
 type BarProps = {
     text: string;
@@ -14,7 +15,8 @@ type BarProps = {
 } & BoxProps;
 
 const AnnouncementBar: React.FC<BarProps> = (props) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     const { onClick } = props;
 

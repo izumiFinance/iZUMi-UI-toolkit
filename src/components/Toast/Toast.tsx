@@ -1,4 +1,4 @@
-import { Center, useToast, ToastId, useColorMode, Text, HStack, Stack, Divider } from '@chakra-ui/react';
+import { Center, useToast, ToastId, Text, HStack, Stack, Divider } from '@chakra-ui/react';
 import Card from '../Card/Card';
 import CloseButton from '../Buttons/CloseButton/CloseButton';
 import { getColorThemeSelector } from '../../utils/funcs';
@@ -9,6 +9,7 @@ import SuccessIcon from '../Icon/SuccessIcon';
 import WarningIcon from '../Icon/WarningIcon';
 import ErrorIcon from '../Icon/ErrorIcon';
 import ExtralLinkIcon from '../Icon/ExtralLinkIcon';
+import { useTheme } from 'next-themes';
 
 export enum ToastType {
     info = 'info',
@@ -23,7 +24,8 @@ export type ToastLink = {
 
 export const useCustomToast = () => {
     const toast = useToast();
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme: systemTheme } = useTheme();
+    const colorTheme = getColorThemeSelector(systemTheme === 'dark' ? 'dark' : 'light');
     const isMobile = useIsMobile();
 
     const theme = {

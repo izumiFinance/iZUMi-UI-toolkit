@@ -1,11 +1,13 @@
-import { HStack, BoxProps, useColorMode } from '@chakra-ui/react';
+import { HStack, BoxProps } from '@chakra-ui/react';
 import React from 'react';
 import { getColorThemeSelector } from '../../utils/funcs';
+import { useTheme } from 'next-themes';
 
 type props = {} & BoxProps;
 
 export const CardTagContainer: React.FC<props> = (props) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const { children, ...rest } = props;
 
     return (

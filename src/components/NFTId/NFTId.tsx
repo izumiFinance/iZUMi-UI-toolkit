@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, useColorMode, BoxProps, HStack, StackDirection, Icon } from '@chakra-ui/react';
+import { Text, BoxProps, HStack, StackDirection, Icon } from '@chakra-ui/react';
 import { i_text_copy_bold } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
 import { AiOutlineLink } from 'react-icons/ai';
 import Info from '../Info/Info';
 import useIsMobile from '../../hooks/useIsMobile';
+import { useTheme } from 'next-themes';
 
 type NFTIdProps = {
     id: string | number | null;
@@ -14,7 +15,8 @@ type NFTIdProps = {
 } & BoxProps;
 
 export const NFTId: React.FC<NFTIdProps> = ({ id, link, direction, name, ...rest }) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const isMobile = useIsMobile();
 
     return (

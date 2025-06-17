@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flex, Box, useColorMode, Image } from '@chakra-ui/react';
+import { Flex, Box, Image } from '@chakra-ui/react';
 import MediaList from '../MediaList/MediaList';
 import CopyrightInfo from '../CopyrightInfo/CopyrightInfo';
 import ColorModeSelect from '../ColorModeSelect/ColorModeSelect';
@@ -8,13 +8,16 @@ import { getColorThemeSelector } from '../../../utils/funcs';
 import { useHistory } from 'react-router-dom';
 import useIsMobile from '../../../hooks/useIsMobile';
 import './Sidebar.css';
+import { useTheme } from 'next-themes';
+
 interface Props {
     Navbar?: any;
     BuyiZiButton?: any;
 }
 const Sidebar: React.FC<Props> = (pros) => {
     const { Navbar, BuyiZiButton } = pros;
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     const bgColor = colorTheme('#ffffff', '#292343');
     const [showNav, setShowNav] = useState(false);
@@ -52,7 +55,7 @@ const Sidebar: React.FC<Props> = (pros) => {
             />
             <Box flexShrink={0} w="100%" height="140px" position="relative" mb="10px !important">
                 <Image
-                    src={ '/assets/home/iziLogo/logo.svg'}
+                    src={'/assets/home/iziLogo/logo.svg'}
                     width="38px"
                     height="38px"
                     position="absolute"
@@ -64,10 +67,7 @@ const Sidebar: React.FC<Props> = (pros) => {
                     }}
                 />
                 <Image
-                    src={colorTheme(
-                         '/assets/home/iziLogo/Darktext.svg',
-                         '/assets/home/iziLogo/Whitetext.svg'
-                    )}
+                    src={colorTheme('/assets/home/iziLogo/Darktext.svg', '/assets/home/iziLogo/Whitetext.svg')}
                     width={showNav ? '80px' : '0px'}
                     height={showNav ? '25px' : '0px'}
                     position="absolute"
@@ -82,7 +82,7 @@ const Sidebar: React.FC<Props> = (pros) => {
                     transitionDuration="0.2s"
                     transitionTimingFunction="ease"
                     transitionDelay={showNav ? '0.3s' : '0s'}
-                    fallbackSrc={ '/assets/home/iziLogo/Darktext.svg'}
+                    fallbackSrc={'/assets/home/iziLogo/Darktext.svg'}
                 />
             </Box>
             <Navbar setShowNav={setShowNav} showNav={showNav} />

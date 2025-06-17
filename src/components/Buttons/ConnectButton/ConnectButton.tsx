@@ -1,9 +1,10 @@
-import { Text, Flex, BoxProps, useColorMode, Box, Image } from '@chakra-ui/react';
+import { Text, Flex, BoxProps, Box, Image } from '@chakra-ui/react';
 import React from 'react';
 import useIsMobile from '../../../hooks/useIsMobile';
 import { a_h5, i_text_d } from '../../../style';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import CustomButton from '../CustomButton/CustomButton';
+import { useTheme } from 'next-themes';
 
 type ConnectButtonProps = {
     Identicon: any;
@@ -13,7 +14,8 @@ type ConnectButtonProps = {
 
 const ConnectButton: React.FC<ConnectButtonProps> = (props) => {
     const { Identicon, onClick, variant, ...rest } = props;
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const isMobile = useIsMobile();
     return variant && variant === 'black' ? (
         <CustomButton

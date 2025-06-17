@@ -1,7 +1,8 @@
-import { Box, Flex, Image, BoxProps, useColorMode } from '@chakra-ui/react';
+import { Box, Flex, Image, BoxProps } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { getColorThemeSelector } from '../../../utils/funcs';
+import { useTheme } from 'next-themes';
 
 export type Props = {
     setShowNav: Function | undefined;
@@ -12,14 +13,12 @@ export type Props = {
 const ToggleIcon: React.FC<Props> = (props) => {
     const { setShowNav, showNav, onClick, ...rest } = props;
     const { t } = useTranslation();
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     const backgroundColor = colorTheme('#FFFFFF', '#3B365B');
     const lineColor = colorTheme('#2D264B', '#F2ECFF');
-    const arrowImg = colorTheme(
-         '/assets/sidebar/lightArrow.svg',
-         '/assets/sidebar/darkArrow.svg'
-    );
+    const arrowImg = colorTheme('/assets/sidebar/lightArrow.svg', '/assets/sidebar/darkArrow.svg');
 
     return (
         <Flex

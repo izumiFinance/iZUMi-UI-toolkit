@@ -1,6 +1,7 @@
-import { Tag, BoxProps, useColorMode } from '@chakra-ui/react';
+import { Tag, BoxProps } from '@chakra-ui/react';
 import React from 'react';
 import { getColorThemeSelector } from '../../utils/funcs';
+import { useTheme } from 'next-themes';
 
 type props = {
     variant: 'blue' | 'purple' | 'orange' | 'grey' | 'green' | 'red';
@@ -10,9 +11,10 @@ type props = {
 
 export const CardTag: React.FC<props> = (props) => {
     const { variant, text, icon, ...rest } = props;
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
-    const theme = {
+    const themeColor = {
         blue: {
             color: colorTheme('primary.500', 'primary.50'),
             bg: colorTheme('primary.100', '#2252CC'),
@@ -46,8 +48,8 @@ export const CardTag: React.FC<props> = (props) => {
             // top="0"
             // left="32px"
             // transform="translateY(-50%)"
-            color={theme[variant].color}
-            bg={theme[variant].bg}
+            color={themeColor[variant].color}
+            bg={themeColor[variant].bg}
             borderColor="#5F9EFF"
             border={colorTheme('1px', '0')}
             fontSize="12px"

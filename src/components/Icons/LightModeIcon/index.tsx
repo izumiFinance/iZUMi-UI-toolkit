@@ -1,4 +1,4 @@
-import { useColorMode } from '@chakra-ui/react';
+import { useTheme } from 'next-themes';
 import React from 'react';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import PathIcon from '../PathIcon/PathIcon';
@@ -8,7 +8,8 @@ interface Props {
 }
 
 const LightModeIcon: React.FC<Props> = ({ isHovering }) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     return (
         <PathIcon

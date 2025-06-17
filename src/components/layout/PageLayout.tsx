@@ -1,9 +1,11 @@
-import { Divider, Flex, VStack, useColorMode } from '@chakra-ui/react';
+import { Divider, Flex, VStack } from '@chakra-ui/react';
 import { ReactElement, useEffect, useState } from 'react';
 import { getColorThemeSelector } from '../../utils/funcs';
 import { useLocation } from 'react-router-dom';
 import useIsMobile from '../../hooks/useIsMobile';
 import { Loading } from '../Loading/Loading';
+import { useTheme } from 'next-themes';
+
 export type AdaptationMode = 'mobile' | 'pc';
 
 export type PageLayoutProps = {
@@ -16,7 +18,8 @@ export type PageLayoutProps = {
 };
 
 const PageLayout: React.FC<PageLayoutProps> = (props) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const isMobile = useIsMobile();
 
     // const bars = config.map((item: any, index: any) => {
