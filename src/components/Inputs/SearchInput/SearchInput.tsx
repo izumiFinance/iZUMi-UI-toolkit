@@ -1,5 +1,5 @@
 import { i_text_copy_bold } from '../../../style';
-import { Input, InputGroup, InputRightElement, InputProps } from '@chakra-ui/react';
+import { Input, InputGroup, InputProps } from '@chakra-ui/react';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import { FaSearch } from 'react-icons/fa';
 import { useTheme } from 'next-themes';
@@ -17,7 +17,7 @@ export const SearchInput: React.FC<SearchInputProps> = (props) => {
     const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     return (
-        <InputGroup {...rest}>
+        <Input.Group {...rest}>
             <Input
                 variant="filled"
                 placeholder={placeholder}
@@ -29,9 +29,9 @@ export const SearchInput: React.FC<SearchInputProps> = (props) => {
                 bg={colorTheme('#F9F9FB', '#140E28')}
                 {...rest}
             />
-            <InputRightElement h="100%" mt="4px">
+            <Input.RightElement h="100%" mt="4px">
                 {FaSearch}
-            </InputRightElement>
-        </InputGroup>
+            </Input.RightElement>
+        </Input.Group>
     );
 };
