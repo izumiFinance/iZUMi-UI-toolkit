@@ -1,9 +1,10 @@
-import { Flex, Menu, MenuButton, MenuList, MenuItem, Divider, useColorMode } from '@chakra-ui/react';
+import { Flex, Menu, MenuItem } from '@chakra-ui/react';
 import { useHover } from '../../../hooks/useHover';
 import { useState } from 'react';
 import { links } from '../../../config/links';
 import { i_text_d } from '../../../style';
 import { getColorThemeSelector } from '../../../utils/funcs';
+import { useTheme } from 'next-themes';
 interface Props {
     Icon: React.FC<{
         isHovering: boolean;
@@ -11,7 +12,8 @@ interface Props {
 }
 export const TelegramList: React.FC<Props> = ({ Icon }) => {
     const [ref, isHovering] = useHover<HTMLDivElement>();
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const [isOpenList, setOpenList] = useState(false);
     return (
         <Flex
@@ -30,45 +32,36 @@ export const TelegramList: React.FC<Props> = ({ Icon }) => {
                 <Icon isHovering={isHovering} />
             </Flex>
             <Flex zIndex="1">
-                <Menu isOpen={isOpenList}>
-                    <MenuButton></MenuButton>
-                    <MenuList
-                        minW="0px"
-                        w="130px"
-                        className={i_text_d}
-                        bg={colorTheme('#FBFBFB', '#100C1E')}
-                        position="absolute"
-                        bottom="40px"
-                        left="-20px"
-                        fontSize="13px"
-                    >
-                        <MenuItem
-                            justifyContent="center"
+                <Menu.Root open={isOpenList} onOpenChange={setOpenList}>
+                    <Menu.Trigger>
+                        <div />
+                    </Menu.Trigger>
+                    <Menu.Content>
+                        <Menu.Item
                             onClick={() => {
                                 window.open(links.telegramChannel);
                             }}
                         >
                             Channel
-                        </MenuItem>
-                        <Divider></Divider>
-                        <MenuItem
-                            justifyContent="center"
+                        </Menu.Item>
+                        <Menu.Separator />
+                        <Menu.Item
                             onClick={() => {
                                 window.open(links.telegramCN);
                             }}
                         >
                             中文
-                        </MenuItem>
-                        <MenuItem
+                        </Menu.Item>
+                        <Menu.Item
                             justifyContent="center"
                             onClick={() => {
                                 window.open(links.telegramEN);
                             }}
                         >
                             English
-                        </MenuItem>
-                    </MenuList>
-                </Menu>
+                        </Menu.Item>
+                    </Menu.Content>
+                </Menu.Root>
             </Flex>
         </Flex>
     );

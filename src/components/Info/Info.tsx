@@ -1,7 +1,7 @@
-import { InfoOutlineIcon } from '@chakra-ui/icons';
 import { BoxProps, chakra, ChakraProps, Flex, HStack, Stack, StackDirection, Tooltip } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import { Heading } from '../Typography/Typography';
+import { FiInfo } from 'react-icons/fi';
 
 export type InfoProps = {
     label: string | ReactElement;
@@ -63,7 +63,7 @@ const Info = chakra(
                     ) : (
                         value
                     )}
-                    {tooltip && <Tooltip label={tooltip}>{tooltipIcon ?? <InfoOutlineIcon />}</Tooltip>}
+                    {tooltip && <Tooltip label={tooltip}>{tooltipIcon ?? FiInfo}</Tooltip>}
                 </HStack>
             </Stack>
         );

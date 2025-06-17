@@ -1,10 +1,11 @@
-import { Box, Flex, HStack, Text, useColorMode, BoxProps } from '@chakra-ui/react';
+import { Box, Flex, HStack, Text, BoxProps } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Card from '../../components/Card/Card';
 import CloseButton from '../../components/Buttons/CloseButton/CloseButton';
 import { i_text_copy_bold } from '../../style';
 import { getColorThemeSelector } from '../../utils/funcs';
 import useIsMobile from '../../hooks/useIsMobile';
+import { useTheme } from 'next-themes';
 
 const MotionBox = motion(Box);
 
@@ -21,7 +22,8 @@ type ModalProps = {
 
 export const Modal: React.FC<ModalProps> = (props) => {
     const { isOpen, onClose, title, children, modalBg, titleProps, contentProps, isShowClose = true, ...rest } = props;
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const bgColor = modalBg ?? colorTheme('#ffffff', '#211834');
     const isMobile = useIsMobile();
 

@@ -1,7 +1,7 @@
-import { SearchIcon } from '@chakra-ui/icons';
 import { i_text_copy_bold } from '../../../style';
 import { Input, InputGroup, InputRightElement, InputProps, useColorMode } from '@chakra-ui/react';
 import { getColorThemeSelector } from '../../../utils/funcs';
+import { FaSearch } from 'react-icons/fa';
 
 type SearchInputProps = {
     placeholder: string | any;
@@ -28,7 +28,7 @@ export const SearchInput: React.FC<SearchInputProps> = (props) => {
                 {...rest}
             />
             <InputRightElement h="100%" mt="4px">
-                <SearchIcon boxSize={5} />
+                {FaSearch}
             </InputRightElement>
         </InputGroup>
     );

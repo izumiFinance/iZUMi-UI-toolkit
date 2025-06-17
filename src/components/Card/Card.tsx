@@ -1,11 +1,13 @@
-import { chakra, Flex, useColorMode } from '@chakra-ui/react';
+import { chakra, Flex } from '@chakra-ui/react';
 import { getColorThemeSelector } from '../../utils/funcs';
+import { useTheme } from 'next-themes';
 
 type Variant = 'base' | 'light' | 'deep' | 'deep2' | 'purpleLinear' | 'grey' | 'navyBlue' | 'none';
 
 // TODO: Add a proper boxShadowValue when in hover state.
 const Card = chakra((props) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const { children, variant, ...rest } = props;
 
     const themeColor = {

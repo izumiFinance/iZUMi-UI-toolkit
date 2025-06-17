@@ -1,5 +1,6 @@
-import { BoxProps, useColorMode, Image, Flex } from '@chakra-ui/react';
+import { BoxProps, Image, Box } from '@chakra-ui/react';
 import React, { ReactElement } from 'react';
+import { useTheme } from 'next-themes';
 import { i_h5 } from '../../../style';
 import { getColorThemeSelector } from '../../../utils/funcs';
 
@@ -35,7 +36,8 @@ export type ButtonProps = {
 } & BoxProps;
 
 const CustomButton: React.FC<ButtonProps> = (props) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
     const { text, disabled, variant, selected, fontClass = i_h5, leftIcon, leftIconElement, rightIcon, ...rest } = props;
 
     const themeColor = {
@@ -309,22 +311,23 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
         }
     };
     return (
-        <Flex
+        <Box
             as="button"
+            display="flex"
             transition="all 0.3s ease"
             borderRadius="2px"
             className={fontClass}
             position="relative"
             {...customStyle()}
-            disabled={disabled}
             _disabled={{
                 opacity: 0.3,
                 cursor: 'not-allowed',
             }}
+            aria-disabled={disabled}
             alignItems="center"
             justifyContent="center"
             userSelect={{ base: 'none', sm: 'auto' }}
-            sx={{
+            css={{
                 WebkitTapHighlightColor: 'transparent',
             }}
             {...rest}
@@ -333,7 +336,7 @@ const CustomButton: React.FC<ButtonProps> = (props) => {
             {leftIconElement && leftIconElement}
             {text}
             {rightIcon && rightIcon}
-        </Flex>
+        </Box>
     );
 };
 

@@ -1,7 +1,8 @@
-import { Center, VStack, Button, useColorMode } from '@chakra-ui/react';
+import { Center, VStack, Button } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import { getColorThemeSelector } from '../../utils/funcs';
 import { Text } from '../Typography/Typography';
+import { useTheme } from 'next-themes';
 
 export type ConnectorProps = {
     name: string;
@@ -10,7 +11,8 @@ export type ConnectorProps = {
 };
 
 const Connector: React.FC<ConnectorProps> = (props) => {
-    const colorTheme = getColorThemeSelector(useColorMode().colorMode);
+    const { theme } = useTheme();
+    const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     return (
         <VStack

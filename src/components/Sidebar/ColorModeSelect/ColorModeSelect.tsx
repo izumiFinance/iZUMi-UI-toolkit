@@ -1,7 +1,8 @@
 import React from 'react';
-import { Flex, useColorMode, BoxProps, Image, ImageProps } from '@chakra-ui/react';
+import { Flex, BoxProps, Image, ImageProps } from '@chakra-ui/react';
 import { useHover } from '../../../hooks/useHover';
 import useIsMobile from '../../../hooks/useIsMobile';
+import { useTheme } from 'next-themes';
 
 const ColorModeSelect: React.FC<{ showNav: boolean; imgProps?: ImageProps; imgRef?: any } & BoxProps> = ({
     showNav,
@@ -9,7 +10,7 @@ const ColorModeSelect: React.FC<{ showNav: boolean; imgProps?: ImageProps; imgRe
     imgRef,
     ...rest
 }) => {
-    const { colorMode, setColorMode } = useColorMode();
+    const { theme, setTheme } = useTheme();
     const mobile = useIsMobile();
     const [ref, isHovering] = useHover<any>();
 
@@ -29,17 +30,16 @@ const ColorModeSelect: React.FC<{ showNav: boolean; imgProps?: ImageProps; imgRe
                 boxSize={showNav ? '25px' : '30px'}
                 src={
                     isHovering
-                        ? colorMode === 'light'
+                        ? theme === 'light'
                             ? '/assets/header/HoverColorModeSelect.svg'
                             : '/assets/header/HoverdarkMode.svg'
-                        : colorMode === 'light'
+                        : theme === 'light'
                         ? '/assets/header/ColorModeSelect.svg'
                         : '/assets/header/darkMode.svg'
                 }
-                fallbackSrc="/assets/header/ColorModeSelect.svg"
                 cursor="pointer"
                 onClick={() => {
-                    setColorMode(colorMode === 'light' ? 'dark' : 'light');
+                    setTheme(theme === 'light' ? 'dark' : 'light');
                 }}
                 {...imgProps}
             ></Image>
