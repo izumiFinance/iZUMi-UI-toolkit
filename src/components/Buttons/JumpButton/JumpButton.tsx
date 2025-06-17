@@ -3,7 +3,7 @@ import { Icon, Image } from '@chakra-ui/react';
 import { ButtonProps } from '../CustomButton/CustomButton';
 import CustomButton from '../CustomButton/CustomButton';
 import { i_text_copy } from '../../../style';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import placeholder from '../../../assets/placeholder.png';
 
 type JumpButtonProps = {
@@ -16,7 +16,7 @@ type JumpButtonProps = {
 } & ButtonProps;
 
 const JumpButton: React.FC<JumpButtonProps> = (props) => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const { text, target, param, type, icon, imageUrl, ...rest } = props;
 
     return (
@@ -29,12 +29,7 @@ const JumpButton: React.FC<JumpButtonProps> = (props) => {
                     h="50px"
                     fontClass={i_text_copy}
                     onClick={() => {
-                        history.push({
-                            pathname: target,
-                            state: {
-                                ...param,
-                            },
-                        });
+                        navigate(target, { state: param });
                     }}
                     {...rest}
                 />
@@ -50,12 +45,7 @@ const JumpButton: React.FC<JumpButtonProps> = (props) => {
                     borderRadius="3px"
                     fontSize="14px"
                     onClick={() => {
-                        history.push({
-                            pathname: target,
-                            state: {
-                                ...param,
-                            },
-                        });
+                        navigate(target, { state: param });
                     }}
                     p="7px"
                     {...rest}
@@ -68,12 +58,7 @@ const JumpButton: React.FC<JumpButtonProps> = (props) => {
                     fallbackSrc={placeholder}
                     cursor="pointer"
                     onClick={() => {
-                        history.push({
-                            pathname: target,
-                            state: {
-                                ...param,
-                            },
-                        });
+                        navigate(target, { state: param });
                     }}
                     {...(rest as any)}
                 />

@@ -1,16 +1,16 @@
 import { Flex, BoxProps } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { i_h5 } from '../../../style';
 
 const BackButton: React.FC<BoxProps> = (props) => {
     const { t } = useTranslation();
-    const history = useHistory();
+    const navigate = useNavigate();
     return (
         <Flex
             onClick={() => {
-                history.goBack();
+                navigate(-1);
             }}
             cursor="pointer"
             className={i_h5}
