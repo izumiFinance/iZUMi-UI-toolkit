@@ -1,4 +1,5 @@
-import { HStack, Button, Input, Tooltip, BoxProps, useOutsideClick, Text } from '@chakra-ui/react';
+import { HStack, Button, Input, Tooltip, BoxProps, Text } from '@chakra-ui/react';
+import { useOutsideClick } from '@chakra-ui/react-use-outside-click';
 import React, { useCallback, useState } from 'react';
 import { getColorThemeSelector } from '../../../utils/funcs';
 import { i_h3, i_h4, i_text_copy } from '../../../style';
