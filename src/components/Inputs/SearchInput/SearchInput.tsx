@@ -17,7 +17,7 @@ export const SearchInput: React.FC<SearchInputProps> = (props) => {
     const colorTheme = getColorThemeSelector(theme === 'dark' ? 'dark' : 'light');
 
     return (
-        <InputGroup endElement={FaSearch} {...rest}>
+        <InputGroup endElement={<FaSearch />}>
             <Input value={value || ''} placeholder={placeholder} onChange={(e: any) => onSearchKeyChange(e)} />
         </InputGroup>
     );
